@@ -1,0 +1,50 @@
+/* src/components/Navbar.module.css
+
+   このファイルはナビゲーションバーのスタイルシートです。
+   レスポンシブデザインのためのメディアクエリも含まれています。
+*/
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  color: #ee2214;
+  width: 50px;
+  height: auto;
+}
+
+.link {
+  height: 40px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.link svg {
+  margin-right: 20px;
+}
+
+.desktopMenu {
+  display: none;
+}
+
+.mobileMenu {
+  display: block;
+}
+
+/* レスポンシブデザインのためのメディアクエリ */
+
+@media screen and (min-width: 600px) {
+  .desktopMenu {
+    display: flex; /* 横並びにする */
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}

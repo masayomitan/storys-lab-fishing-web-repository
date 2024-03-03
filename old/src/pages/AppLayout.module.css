@@ -1,0 +1,10 @@
+/*
+  src/pages/AppLayout.module.css
+
+  このファイルは、AppLayout.jsファイルに対応するスタイルを定義します。
+  共通レイアウトのデザイン要素（色、マージン、パディングなど）がここで定義されます。
+*/
+
+.container {
+  margin: 0 auto; /* コンテンツエリアのマージンを自動調整 */
+}

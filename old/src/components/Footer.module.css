@@ -1,0 +1,94 @@
+.footer {
+  background-color: #232f3e;
+  color: #ffffff;
+}
+
+.backToTop {
+  background-color: #37475a;
+  padding: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.backToTop:hover {
+  background-color: #485769;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.category {
+  flex: 1 1 calc(33% - 1rem);
+  padding: 0.5rem;
+}
+
+.categoryTitle {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.footer .linkItem {
+  font-size: 0.875rem;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+}
+
+.footer .linkItem:hover {
+  color: var(--hover-text-color);
+}
+
+.logoSnsSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.logoSns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.snsIcons {
+  margin-left: 0.5rem;
+}
+
+.snsIcon {
+  width: 24px;
+  height: auto;
+  margin: 0 0.25rem;
+  color: #ffffff;
+}
+
+.snsIcon:hover {
+  color: var(--hover-text-color);
+}
+
+.copyright {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* モバイル表示のためのメディアクエリ */
+@media screen and (max-width: 600px) {
+  .categories {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .category {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}

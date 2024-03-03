@@ -1,0 +1,57 @@
+<!--
+  index.html
+  
+  このファイルはReactアプリケーションの公開ディレクトリ(public)の中心的なHTMLファイルです。
+  Reactアプリケーションは基本的にはシングルページアプリケーションなので、このHTMLファイルが最初にロードされ、
+  その後はReactがJavaScriptを使用して画面を動的に更新します。
+
+  このファイルの中に含まれている<div id="root"></div>は、Reactのエントリポイントとなる箇所です。
+  Reactアプリケーションはこのdiv要素内に描画されます。
+
+  また、このHTMLファイルはアプリケーション全体のメタデータを管理する場所でもあります。
+  メタデータには、アプリケーションの説明、使用するフォント、テーマカラー、モバイルデバイスやデスクトップでの表示設定などが含まれます。
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 文字コードを定義 -->
+    <meta charset="utf-8" />
+
+    <!-- ファビコンのリンク。"%PUBLIC_URL%"はビルド時にpublicフォルダのURLに置換されます -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <!-- ビューポートの設定。デバイスのスクリーン幅に応じてレンダリングを制御します -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- テーマカラーの設定。一部のモバイルブラウザではツールバーの色に影響します -->
+    <meta name="theme-color" content="#000000" />
+
+    <!-- サイトの説明。SEOや共有リンクのサムネイルで使用されます -->
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+
+    <!-- Appleデバイスのホーム画面アイコンのリンク -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <!-- Webアプリマニフェストのリンク。アプリの名前、アイコンなどの設定を含みます -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- フォントのリンク。Google FontsからRobotoフォントを読み込んでいます -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- サイトのタイトル -->
+    <title>Storys lab fishing app</title>
+  </head>
+  <body>
+    <!-- JavaScriptが無効化された状態で表示するメッセージ -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Reactアプリケーションがレンダリングされるdiv要素 -->
+    <div id="root"></div>
+  </body>
+</html>
