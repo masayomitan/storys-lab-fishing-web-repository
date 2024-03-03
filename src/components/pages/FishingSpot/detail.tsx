@@ -12,8 +12,8 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import SeasonFishesTab from '../../../parts/Tab/seasonTab';
-import TideTable from '../../../parts/Table/tideTable';
+import SeasonFishesTab from '../../parts/Tab/seasonTab';
+import TideTable from '../../parts/Table/tideTable';
 
 // TODO 型は実データ次第で変更でてくる
 type FishingSpotBoxProps = {
@@ -26,10 +26,10 @@ type FishingSpotBoxProps = {
   }];
 };
 
-const FishingSpotDetailBox: React.FC<FishingSpotBoxProps> = (data) => {
+const FishingSpotBox: React.FC<FishingSpotBoxProps> = (data) => {
   const router = useRouter();
   const handleClick = () => {
-    router.push(`/fishing-spots/detail/${data.id}`);
+      router.push(`/fishing-spots/detail/${data.id}`);
   };
 
   return (
@@ -52,7 +52,7 @@ const FishingSpotDetailBox: React.FC<FishingSpotBoxProps> = (data) => {
         <Text>{data.name}</Text>
       </Box>
       <Box>
-        <Flex>
+        <Flex wrap="wrap">
           {data.tags.map((tag, index) => (
             <Text 
               key={index}
@@ -61,9 +61,9 @@ const FishingSpotDetailBox: React.FC<FishingSpotBoxProps> = (data) => {
               borderRadius="5"
               m={1}
               p={2}
-              >
-                {tag.name}
-              </Text>
+            >
+              {tag.name}
+            </Text>
           ))}
         </Flex>
       </Box>
@@ -94,26 +94,27 @@ const FishingSpotDetail = ({
 
   return (
     <Box>
+      <Heading 
+        border="1px solid"
+        borderRadius="5" 
+        textAlign="center"
+        size="md"
+      >
+        エリア情報{pathId}の釣り場情報詳細
+      </Heading>
+      <Box boxShadow="sm" p={4} position="relative">
+        <Box w="100%" h="15rem" textAlign="center">
+          <Image
+            src="/"
+            layout="fill"
+            objectFit="cover"
+            alt="釣り場詳細画像"
+          />
+        </Box>
+      </Box>
+
       <Grid>
-        <GridItem colSpan={12} p={4}>
-          <Heading 
-            border="1px solid"
-            borderRadius="5" 
-            textAlign="center"
-            size="md"
-          >
-            エリア情報{pathId}の釣り場情報詳細
-          </Heading>
-          <Box boxShadow="sm" p={4} position="relative">
-            <Box w="100%" h="15rem" textAlign="center">
-              {/* <Image
-                // src="/images/homepage-banner-mobile.png"
-                layout="fill"
-                objectFit="cover"
-                alt="釣り場詳細画像"
-              /> */}
-            </Box>
-          </Box>
+        <GridItem colSpan={12} p={4}>          
           <Box>
             <Text fontSize="24px">
               釣り場名称
@@ -161,26 +162,55 @@ const FishingSpotDetail = ({
               ))}
             </Flex>
           </Box>
-          <Box>
-            <Text fontSize="20px">
-              潮時表
-            </Text>
-          </Box>
+
           <TideTable />
-          
+
+          <Box>
+            <Box>
+              <Text 
+                border="1px solid" 
+                fontSize="24px" 
+                textAlign="center"
+              >
+                運営・インストラクターの記事
+              </Text>
+            </Box>
+            <Box style={{ margin: '10px 0' }}>
+              <Text
+                fontSize="18px"
+                style={{
+                  letterSpacing: '0.05em',
+                  lineHeight: '1.6',
+                }}
+              >
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+              </Text>
+            </Box>
+          </Box>
+
+          <Box 
+            border="1px solid"
+            borderRadius="5" 
+            textAlign="center"
+            fontSize="md"
+          >
+            近くの釣り場情報一覧
+          </Box>
           <Grid 
             templateColumns="repeat(2, 1fr)" 
             gap={4}
           >
-            {/* {data.map((spot, index) => (
-              <FishingSpotDetailBox
+            {data.map((spot, index) => (
+              <FishingSpotBox
                 key={spot.id}
                 id={spot.id}
                 name={spot.name}
                 text={spot.text}
                 tags={spot.tags}
               />
-            ))} */}
+            ))}
           </Grid>
         </GridItem>
       </Grid>

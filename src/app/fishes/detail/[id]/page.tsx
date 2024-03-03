@@ -1,10 +1,13 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 
-import { Container } from '@chakra-ui/react';
+import Layout from '../../../../components/parts/Layout/layout';
+import FishDetail from '../../../../components/pages/Fish/detail'
 import { useParams } from "next/navigation";
 
 
-const Fish = () => {
+const FishDetailPage = () => {
   const [fishId, setFishId] = useState<string | null>(null);
 
   const params = useParams();
@@ -17,8 +20,10 @@ const Fish = () => {
   }, [params]);
 
   return (
-    <Container>魚詳細ページ {fishId}</Container>
+    <Layout>
+      <FishDetail />
+    </Layout>
   );
 }
 
-export default Fish;
+export default FishDetailPage;

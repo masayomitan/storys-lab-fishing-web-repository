@@ -1,28 +1,32 @@
-'use client'
-
 import React from 'react';
-import { Box } from '@chakra-ui/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import "./style.css";
+import { Box, Flex, Button } from '@chakra-ui/react';
 
 const ScrollTab = () => {
-    const slideContents = ["ルアー", "リール", "ハリス", "タックル", "まき餌", "その他"];
+  const slideContents = ["ルアー", "リール", "ハリス", "タックル", "まき餌", "その他","ルアー", "リール", "ハリス", "タックル", "まき餌", "その他"];
 
-    return (
-        <Box>
-            <Swiper
-                spaceBetween={5}
-                slidesPerView={4}
+  return (
+    <Box overflowX="auto" w="full" py={2} px={1}>
+      <Flex minWidth="max-content">
+        {slideContents.map((content, index) => (
+          <Box
+            key={index}
+            m={1}
+          >
+            <Button 
+              key={index}
+              m={1}
+              p='2px 5px'
+              fontSize="14"
+              border="1px solid" 
+              borderRadius="5"
             >
-            {slideContents.map((content, index) => (
-                <SwiperSlide key={index}>
-                    {content}
-                </SwiperSlide>
-            ))}
-            </Swiper>
-        </Box>
-    );
+              {content}
+            </Button>
+          </Box>
+        ))}
+      </Flex>
+    </Box>
+  );
 }
 
 export default ScrollTab;

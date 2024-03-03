@@ -30,24 +30,19 @@ const  Home: React.FC = () => {
         {/* 横スクロールバー */}
         <ScrollTab/>
 
-        <Grid templateColumns="repeat(12, 1fr)" gap={4} p={4}>
-          <GridItem colSpan={12} boxShadow="sm" p={4} position="relative">
-            <Box w="100%" h="15rem" textAlign="center">
+        <Box gap={4} mb={20} p={4}>
+          <Box boxShadow="sm" p={4} position="relative">
+            <Box w="100%" h="250px" textAlign="center">
               <Image
                 src="/images/homepage-banner-mobile.png"
                 layout="fill"
                 objectFit="cover"
                 alt="Story's"
               />
-            </Box>
-            
+            </Box>            
             <SearchBar />
-          </GridItem>
-
-          <GridItem boxShadow="sm" p={4}>
-            <Text>日付選定</Text>
-          </GridItem>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* エリア一覧 */}
         <AreaContainer />

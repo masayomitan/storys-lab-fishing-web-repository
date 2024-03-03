@@ -51,10 +51,10 @@ const PrefecturesContainer = () => {
 
       {regions.map((region, index) => (
         <Box key={index}>
-          <Heading mt={4} mb={2}>
+          <Heading m="4px 0 0 4px">
             {region.label}
           </Heading>
-          <GridItem colSpan={12} p={4}>
+          <GridItem colSpan={12} p={1}>
             <Grid 
               templateColumns="repeat(4, 1fr)" 
               gap={4}
