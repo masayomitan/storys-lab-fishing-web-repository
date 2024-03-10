@@ -2,6 +2,7 @@ import React from 'react';
 
 // import "./style.css";
 import Image from 'next/image';
+import FishingMethod from '../FishingMethod'
 
 import { 
   Flex,
@@ -85,25 +86,16 @@ const FishDetail = () => {
               </Text>
             </Box>
         </Box>
+        <FishingMethod />
 
-        <Box>
-          <Box 
-            border="1px solid"
-            borderRadius="5" 
-            textAlign="center"
-            fontSize="md"
-          >
-            その魚の代表的な釣り方
-          </Box>
-          <Box 
-            border="1px solid"
-            borderRadius="5" 
-            textAlign="center"
-            fontSize="md"
-          >
-            他の釣り方
-          </Box>
-        </Box>
+        <Heading 
+          border="1px solid"
+          borderRadius="5" 
+          textAlign="center"
+          size="md"
+        >
+          おすすめ料理
+        </Heading>
       </Box>
     </Box>
   );
