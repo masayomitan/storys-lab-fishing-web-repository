@@ -38,11 +38,13 @@ const Header: React.FC = () => {
             <Link href="/">
               <Image
                 src="/images/header-logo.png"
-                layout="responsive"
-                // Imageコンポーネントのwidthとheightはアスペクト比を維持するために指定
                 width={120}
                 height={30}
-                objectFit="contain"
+                style={{ 
+                  objectFit: 'contain',
+                  width: '120%',
+                  height: 'auto',
+                }}
                 alt="Story's"
               />
             </Link>

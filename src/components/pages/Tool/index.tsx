@@ -27,8 +27,11 @@ const ToolBox = ({ data }) => {
           <Box w="100%" h="150px" textAlign="center" m={10}>
             <Image
               src=""
-              layout="fill"
-              objectFit="cover"
+              style={{ 
+                objectFit: 'cover',
+                width: '100%',
+                height: 'auto',
+              }}
               alt="おすすめ道具画像トップ"
             />
           </Box>
@@ -37,9 +40,12 @@ const ToolBox = ({ data }) => {
           <Box w="100%" h="150px" textAlign="center" m={10}>
             <Image
               src=""
-              layout="fill"
-              objectFit="cover"
               alt="おすすめ道具画像トップ"
+              style={{ 
+                objectFit: 'cover',
+                width: '100%',
+                height: 'auto',
+              }}
             />
           </Box>
         </Box>
