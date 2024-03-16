@@ -9,7 +9,7 @@ import {
   useDisclosure 
 } from '@chakra-ui/react';
 
-const FishingMethod = () => {
+const FishingMethodBox = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   const [showText, setShowText] = useState([false, false, false, false]);
@@ -99,4 +99,4 @@ const FishingMethod = () => {
   );
 }
 
-export default FishingMethod;
+export default FishingMethodBox;

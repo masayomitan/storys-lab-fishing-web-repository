@@ -2,7 +2,8 @@ import React from 'react';
 
 // import "./style.css";
 import Image from 'next/image';
-import FishingMethod from '../FishingMethod'
+import FishingMethodBox from '../FishingMethod'
+import DishBox from '../Dish'
 
 import { 
   Flex,
@@ -14,6 +15,60 @@ import {
   Text 
 } from '@chakra-ui/react';
 
+
+// 実データできたら削除
+const dishData: any = [
+  {
+    id: 1,
+    name: '名称1',
+    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト1',
+    tags: [
+      { id: 1, name: '材料1 100ml' },
+      { id: 2, name: '材料2 5cc' },
+      { id: 3, name: '材料3 10個' },
+    ],
+  },
+  {
+    id: 2,
+    name: '名称2',
+    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト2',
+    tags: [
+      { id: 1, name: '材料1 100ml' },
+      { id: 2, name: '材料2 5cc' },
+      { id: 3, name: '材料3 10個' },
+    ],
+  },
+  {
+    id: 3,
+    name: '名称3',
+    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト3',
+    tags: [
+      { id: 1, name: '材料1 100ml' },
+      { id: 2, name: '材料2 5cc' },
+      { id: 3, name: '材料3 10個' },
+    ],
+  },
+  {
+    id: 4,
+    name: '名称4',
+    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
+    tags: [
+      { id: 1, name: '材料1 100ml' },
+      { id: 2, name: '材料2 5cc' },
+      { id: 3, name: '材料3 10個' },
+    ],
+  },
+  {
+    id: 5,
+    name: '名称4',
+    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
+    tags: [
+      { id: 1, name: '材料1 100ml' },
+      { id: 2, name: '材料2 5cc' },
+      { id: 3, name: '材料3 10個' },
+    ],
+  },
+];
 
 const FishDetail = () => {
   return (
@@ -86,16 +141,11 @@ const FishDetail = () => {
               </Text>
             </Box>
         </Box>
-        <FishingMethod />
+        <FishingMethodBox />
 
-        <Heading 
-          border="1px solid"
-          borderRadius="5" 
-          textAlign="center"
-          size="md"
-        >
-          おすすめ料理
-        </Heading>
+        <DishBox
+          data={dishData}
+        />
       </Box>
     </Box>
   );
