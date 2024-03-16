@@ -44,7 +44,7 @@ const ArticleBox: React.FC<ArticleBoxProps> = ({ index }) => {
   );
 };
 
-const ArticleContainer = () => {
+const ArticleHomeBox = () => {
   return (
     <Box>
       <Grid>
@@ -81,4 +81,4 @@ const ArticleContainer = () => {
   );
 };
 
-export default ArticleContainer;
+export default ArticleHomeBox;

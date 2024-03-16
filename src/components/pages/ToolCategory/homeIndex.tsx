@@ -57,7 +57,7 @@ const ToolCategoryBox: React.FC<ToolCategoryBoxProps> = ({ data }) => {
   );
 };
 
-const ToolCategoryContainer = () => {
+const ToolCategoryHomeBox = () => {
   return (
     <Box>
       <Grid>
@@ -94,4 +94,4 @@ const ToolCategoryContainer = () => {
   );
 };
 
-export default ToolCategoryContainer;
+export default ToolCategoryHomeBox;

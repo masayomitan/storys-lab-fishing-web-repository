@@ -35,7 +35,7 @@ const AreaBox: React.FC<AreaBoxProps> = ({ index }) => {
   );
 };
 
-const AreaContainer = () => {
+const AreaHomeBox = () => {
   return (
     <Box>
       <Grid>
@@ -72,4 +72,4 @@ const AreaContainer = () => {
   );
 };
 
-export default AreaContainer;
+export default AreaHomeBox;

@@ -44,7 +44,7 @@ const FishBox: React.FC<FishBoxProps> = ({ index }) => {
   );
 };
 
-const FishContainer: React.FC = ({}) => {
+const FishHomeBox: React.FC = ({}) => {
   return (
     <Box>
         <Heading 
@@ -78,4 +78,4 @@ const FishContainer: React.FC = ({}) => {
   );
 };
 
-export default FishContainer;
+export default FishHomeBox;

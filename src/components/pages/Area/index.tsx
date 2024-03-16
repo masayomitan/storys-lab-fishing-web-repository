@@ -4,10 +4,10 @@ import React from 'react';
 // import "./style.css";
 import { Container } from '@chakra-ui/react';
 
-const Area = () => {
+const AreaBox = () => {
     return (
         <Container>エリア一覧ページ</Container>
     );
 }
 
-export default Area;
+export default AreaBox;

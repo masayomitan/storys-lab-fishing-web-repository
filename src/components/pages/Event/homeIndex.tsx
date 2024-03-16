@@ -35,7 +35,7 @@ const EventBox: React.FC<EventBoxProps> = ({ index }) => {
   );
 };
 
-const EventContainer = () => {
+const EventHomeBox = () => {
   return (
     <Box>
       <Grid>
@@ -72,4 +72,4 @@ const EventContainer = () => {
   );
 };
 
-export default EventContainer;
+export default EventHomeBox;

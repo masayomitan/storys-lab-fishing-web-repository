@@ -23,7 +23,7 @@ type FishingSpotBoxProps = {
   }];
 };
 
-const FishingSpotBox: React.FC<FishingSpotBoxProps> = (data) => {
+const FishingSpotTmpBox: React.FC<FishingSpotBoxProps> = (data) => {
   const router = useRouter();
   const handleClick = () => {
       router.push(`/fishing-spots/detail/${data.id}`);
@@ -75,7 +75,7 @@ const FishingSpotBox: React.FC<FishingSpotBoxProps> = (data) => {
   );
 };
 
-const FishingSpot = ({
+const FishingSpotBox = ({
   data,
   pathId
 }: any) => {
@@ -99,7 +99,7 @@ const FishingSpot = ({
             gap={4}
           >
             {data.map((spot, index) => (
-              <FishingSpotBox
+              <FishingSpotTmpBox
                   key={spot.id}
                   id={spot.id}
                   name={spot.name}
@@ -119,4 +119,4 @@ const FishingSpot = ({
   );
 }
 
-export default FishingSpot;
+export default FishingSpotBox;
