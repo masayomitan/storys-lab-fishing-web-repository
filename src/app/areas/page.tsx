@@ -1,14 +1,13 @@
 import React from 'react';
 
-import "./style.css";
-import { Container } from '@chakra-ui/react';
+import Layout from '../../components/parts/Layout/layout';
 import Area from '../../components/pages/Area';
 
 const AreaPage = () => {
   return (
-    <Container>
+    <Layout>
       <Area />
-    </Container>
+    </Layout>
   );
 }
 

@@ -70,7 +70,7 @@ const dishData: any = [
   },
 ];
 
-const FishDetail = () => {
+const FishDetailBox = () => {
   return (
     <Box p={4}>
       <Heading 
@@ -151,4 +151,4 @@ const FishDetail = () => {
   );
 }
 
-export default FishDetail;
+export default FishDetailBox;

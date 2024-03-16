@@ -1,105 +1,101 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import Image from 'next/image';
+
 import {
   Box,
   Flex,
-  Grid,
-  GridItem,
   Heading,
   Text,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button
 } from '@chakra-ui/react';
 
 const ToolBox = ({ data }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [selectedDish, setSelectedDish] = useState<any>(null);
+
   const router = useRouter();
-
-  const handleClick = (dish) => {
-    setSelectedDish(dish);
-    onOpen();
+  const handleClick = (tool) => {
+    router.push(`/tools/detail/${tool.tool_id}`);
   };
-
-//   const handleClick = (id: number) => {
-//     router.push(`/dish/detail/${id}`);
-//   };
-
 
   return (
     <Box mt={10} mb={10}>
       <Heading border="1px solid" borderRadius="5" textAlign="center" size="md">
-        おすすめ料理
+        道具種別一覧
       </Heading>
 
-      <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-        {data.map((dish, index) => (
-          <Box key={index}>
-            <Box
-              boxShadow="sm"
-              p={4}
-              h="10rem"
-              border="1px solid"
-              borderRadius="5"
-              _hover={{ bg: "gray.100", cursor: "pointer" }}
-              onClick={() => handleClick(dish)}
-            >
-              <Text>料理情報画像 {dish.id}</Text>
-            </Box>
-            <Text>{dish.name}</Text>
-            <Text>{dish.text}</Text>
+      <Box>
+        <Box boxShadow="sm" p={4} position="relative">
+          <Box w="100%" h="150px" textAlign="center" m={10}>
+            <Image
+              src=""
+              layout="fill"
+              objectFit="cover"
+              alt="おすすめ道具画像トップ"
+            />
           </Box>
-        ))}
-      </Grid>
-
-      {/* Modal */}
-      {selectedDish && (
-        <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={true}>
-        <ModalOverlay
-          bg="rgba(0, 0, 0, 0.6)"
-          onClick={onClose}
-        />
-          <ModalContent
-            margin="auto"
-            mt="10%"
-            w="90%"
-            bg="white"
+        </Box>
+        <Box boxShadow="sm" p={4} position="relative">
+          <Box w="100%" h="150px" textAlign="center" m={10}>
+            <Image
+              src=""
+              layout="fill"
+              objectFit="cover"
+              alt="おすすめ道具画像トップ"
+            />
+          </Box>
+        </Box>
+      </Box>
+          
+      {data.map((toolCategory, index) => (
+        <Box key={index}>
+          <Box
+            boxShadow="sm"
+            textAlign="center"
+            p={4}
+            mt={10}
+            w="50%"
+            border="1px solid"
+            _hover={{ bg: "gray.100", cursor: "pointer" }}
           >
-            
-            <ModalCloseButton />
-            <ModalBody>
-              <Flex direction="column">
-                <Box 
-                  w="100%" 
-                  h="15rem" 
-                  as="img" 
-                  src={selectedDish.imageUrl} 
-                  alt={selectedDish.name + " 画像のaltタグ名"}
-                  borderRadius="md"
-                />
-                <Text>{selectedDish.name}</Text>
-                {selectedDish.tags.map((tag, index) => (
-                  <Text key={index}>{tag.name}</Text>
-                ))}
-                <Text 
-                  h="15rem"
-                  mt={4}>{selectedDish.text}
-                </Text>
-              </Flex>
-            </ModalBody>
-            <ModalFooter>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      )}
+            <Text>{toolCategory.tool_category_name}</Text>
+          </Box>
+
+          <Flex overflowX="auto" mt={10} mb={20}>
+            {toolCategory.tools.map((tool, index) => (
+              <Box
+                key={index}
+                m={2}
+                flex="0 0 auto"
+                w="100px"
+              >
+                <Box
+                  boxShadow="sm"
+                  border="1px solid"
+                  borderRadius="5"
+                  _hover={{ bg: "gray.100", cursor: "pointer" }}
+                  onClick={() => handleClick(tool)}
+                >
+                  <Box
+                    border="1px solid"
+                    w="100%"
+                    h="5rem"
+                  >
+                    <Box>
+                      道具画像 {tool.id}
+                    </Box>
+                  </Box>
+                  <Text>{tool.tool_name}</Text>
+                  <Text>{tool.maker}</Text>
+                  <Text>{tool.recommend}</Text>
+                  <Text>{tool.easy_fishing}</Text>
+                  <Text>{tool.description}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Flex>
+        
+        </Box>
+      ))}
+
     </Box>
   );
 };

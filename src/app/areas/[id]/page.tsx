@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-import { Container } from '@chakra-ui/react';
 import Layout from '../../../components/parts/Layout/layout';
 import FishingSpot from '../../../components/pages/FishingSpot';
 // import { getDataById } from '../../utils/api'
