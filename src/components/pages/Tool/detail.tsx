@@ -33,6 +33,7 @@ const ToolDetailBox: React.FC<any> = () => {
             />
           </Box>          
         </Box>
+
         <Text
           fontSize="24px"
           fontWeight="bold"
@@ -50,6 +51,29 @@ const ToolDetailBox: React.FC<any> = () => {
         >
           10000円
         </Text>
+
+        <Box>
+          <Text
+            fontSize="12px"
+          >
+            モデル
+          </Text>
+          <Text
+            fontSize="12px"
+          >
+            メーカー
+          </Text>
+          <Text
+            fontSize="12px"
+          >
+            重量
+          </Text>
+          <Text
+            fontSize="12px"
+          >
+            全長
+          </Text>
+        </Box>
       </Box>
     </Box>   
   );
