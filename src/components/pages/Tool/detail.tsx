@@ -10,6 +10,7 @@ import {
   GridItem,
   Heading,
   Text,
+  Button,
 } from '@chakra-ui/react';
 
 
@@ -75,6 +76,28 @@ const ToolDetailBox: React.FC<any> = () => {
           </Text>
         </Box>
       </Box>
+       {/* 購入ボタン */}
+       <Flex
+        position="fixed"
+        bottom="0"
+        w="100%"
+        h="50px"
+        m="auto"
+        mb="10px"
+        justifyContent="center"
+        alignItems="center"
+        bg="#e5524e"
+        boxShadow="sm"
+        borderRadius="5" 
+      >
+        <Button
+          color="#fff" 
+          fontSize="20px" 
+          shadow="md"
+        >
+          購入する
+        </Button>
+      </Flex>
     </Box>   
   );
 }
