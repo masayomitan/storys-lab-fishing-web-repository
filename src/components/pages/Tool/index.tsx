@@ -71,7 +71,7 @@ const ToolBox = ({ data }) => {
                 key={index}
                 m={2}
                 flex="0 0 auto"
-                w="100px"
+                w="110px"
               >
                 <Box
                   boxShadow="sm"
