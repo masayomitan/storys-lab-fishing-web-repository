@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 
 import {
@@ -10,63 +9,44 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-type AreaBoxProps = {
-  index: number;
-};
+import AreaItem from '../Area/item/index'
 
-const AreaBox: React.FC<AreaBoxProps> = ({ index }) => {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/areas/${index + 1}`);
-  };
-
-  return (
-    <Box
-      boxShadow="sm"
-      p={4}
-      h="10rem"
-      border="1px solid"
-      borderRadius="5"
-      _hover={{ bg: "gray.100", cursor: "pointer" }}
-      onClick={handleClick}
-    >
-      <Text>エリア情報 {index + 1}</Text>
-    </Box>
-  );
-};
 
 const AreaHomeBox = () => {
   return (
-    <Box>
+    <Box mt={10} mb={10}>
       <Grid>
         <GridItem colSpan={12} p={4}>
           <Heading 
-            border="1px solid"
             borderRadius="5" 
             textAlign="center"
-            size="md"
+            size="lg"
+            p={3}
           >
-          エリア情報一覧
+            都道府県から釣り場を検索
           </Heading>
-          <Grid 
-            templateColumns="repeat(2, 1fr)" 
-            gap={4}
-          >
-          {Array.from({ length: 6 }, (_, index) => (
-            <AreaBox
-              key={index}
-              index={index} 
-            />
-          ))}
-          </Grid>
+          <AreaItem />
         </GridItem>
       </Grid>
-      <Box as="footer" w="full" boxShadow="sm" p={4}>
-        <Text textAlign="center">
+      <Box 
+        border="0.5px solid"
+        boxShadow="md"
+        m={2}
+        p={2}
+        borderRadius="lg"
+        background="lightblue"
+        borderColor="deepskyblue"
+      >
         <Link href="/areas">
-          さらに見る
+          <Text
+            fontSize={20}
+            fontWeight="bold"
+            textAlign="center"
+            color="#fff"
+          >
+            さらに見る
+          </Text>
         </Link>
-        </Text>
       </Box>
     </Box>   
   );

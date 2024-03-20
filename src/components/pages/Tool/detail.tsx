@@ -1,5 +1,8 @@
 import React from 'react';
+
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link'
 
 // import { useRouter } from 'next/navigation';
 
@@ -13,6 +16,36 @@ import {
   Button,
 } from '@chakra-ui/react';
 
+const FishBox: React.FC<any> = ({ index }) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/fishes/detail/${index + 1}`);
+  };
+
+  return (
+    <Box>
+      <Box 
+        w="100%" 
+        h="8rem" 
+        bgColor="teal.600"
+        p="10" 
+        border="1px solid" 
+        textAlign="center"
+        onClick={handleClick}
+      >
+        <Text>魚情報 {index + 1}</Text>
+      </Box>
+      <Box>
+        <Text>
+          名称
+        </Text>
+        <Text>
+          テキスト
+        </Text>
+      </Box>
+    </Box>
+  );
+};
 
 const ToolDetailBox: React.FC<any> = () => {
   // const router = useRouter();
@@ -74,6 +107,27 @@ const ToolDetailBox: React.FC<any> = () => {
           >
             全長
           </Text>
+        </Box>
+        <Box>
+
+        <Grid 
+          templateColumns="repeat(2, 1fr)" 
+          gap={4}
+        >
+          {Array.from({ length: 3 }, (_, index) => (
+            <FishBox
+              key={index}
+              index={index} 
+            />
+          ))}
+        </Grid>
+        <Box as="footer" w="full" boxShadow="sm" p={4}>
+        <Text textAlign="center">
+          <Link href="/fishes">
+            さらに見る
+          </Link>
+        </Text>
+      </Box>
         </Box>
       </Box>
        {/* 購入ボタン */}

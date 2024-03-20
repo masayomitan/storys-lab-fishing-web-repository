@@ -14,8 +14,8 @@ import {
 
 import Layout from '../components/parts/Layout/layout';
 import SearchBar from '../components/parts/SearchBar/index';
-import AreaContainer from '../components/pages/Area/homeIndex';
-import FishContainer from '../components/pages/Fish/homeIndex';
+import AreaHomeBox from '../components/pages/Area/homeIndex';
+import FishHomeBox from '../components/pages/Fish/homeIndex';
 import ArticleContainer from '../components/pages/Article/homeIndex';
 import ToolCategoryContainer from '../components/pages/ToolCategory/homeIndex';
 import EventContainer from '../components/pages/Event/homeIndex';
@@ -25,18 +25,22 @@ const  Home: React.FC = () => {
 
   return (
     <Layout>
-      <Container maxW="container.xl" p={0}>
-
+      <Box>
         {/* 横スクロールバー */}
         <ScrollTab/>
 
-        <Box gap={4} mb={20} p={4}>
-          <Box boxShadow="sm" p={4} position="relative">
+        <Box gap={4}>
+          <Box boxShadow="sm" position="relative">
             <Box w="100%" h="250px" textAlign="center">
               <Image
                 src="/images/homepage-banner-mobile.png"
-                layout="fill"
-                objectFit="cover"
+                width={120}
+                height={120}
+                style={{ 
+                  objectFit: 'cover',
+                  width: '120%',
+                  height: '120%'
+                }}
                 alt="Story's"
               />
             </Box>            
@@ -45,10 +49,10 @@ const  Home: React.FC = () => {
         </Box>
 
         {/* エリア一覧 */}
-        <AreaContainer />
+        <AreaHomeBox />
 
         {/* 魚一覧 */}
-        <FishContainer />
+        <FishHomeBox />
         
         {/* 記事一覧 */}
         <ArticleContainer />
@@ -59,8 +63,7 @@ const  Home: React.FC = () => {
         {/* イベント一覧 */}
         <EventContainer />
 
-      </Container>
-
+      </Box>
     </Layout>
   );
 }
