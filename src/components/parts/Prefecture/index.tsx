@@ -13,64 +13,58 @@ import {
 import { regions } from '../../../constants/prefectures';
 
 type PrefecturesBoxProps = {
-  key: number;
   value: number;
   label: string;
+  region?: string;
 };
 
-const PrefectureBox: React.FC<PrefecturesBoxProps> = ({ value, label }) => {
+type Region = {
+  label: string;
+  prefectures: PrefecturesBoxProps[];
+};
+
+const PrefectureBox: React.FC<Region> = ({ label, prefectures }) => {
   const router = useRouter();
-  const handleClick = () => {
-    router.push(`/prefectures/${value + 1}`);
+  const handleClick = (id) => {
+    router.push(`/prefectures/${id}`);
   };
 
   return (
-    <Box
-      boxShadow="sm"
-      p={4}
-      h="2rem"
-      borderRadius="5"
-      _hover={{ bg: "gray.100", cursor: "pointer" }}
-      onClick={handleClick}
-    >
-      <Text>{label}</Text>
+    <Box>
+      <Heading m="5px" size="xs">
+        {label}
+      </Heading>
+      <Grid templateColumns="repeat(4, 1fr)" gap={2} m="5px">
+        {prefectures.map(prefecture => (
+          <Box
+            key={prefecture.value}
+            boxShadow="sm"
+            p={2}
+            h="2rem"
+            borderRadius="5"
+            _hover={{ bg: "gray.100", cursor: "pointer" }}
+            onClick={() => handleClick(prefecture.value)}
+          >
+            <Text>{prefecture.label}</Text>
+          </Box>
+        ))}
+      </Grid>
     </Box>
   );
 };
 
-const PrefecturesContainer = () => {
+const RegionBox = () => {
   return (
-    <Box>
-      <Heading 
-        border="1px solid"
-        borderRadius="5" 
-        textAlign="center"
-      >
-        都道府県別(イベント、釣り場、魚)
+    <Box mt="6">
+      <Heading textAlign="center" size="sm">
+        都道府県別 イベント、釣り場、魚情報
       </Heading>
 
       {regions.map((region, index) => (
-        <Box key={index}>
-          <Heading m="4px 0 0 4px">
-            {region.label}
-          </Heading>
-          <GridItem colSpan={12} p={1}>
-            <Grid 
-              templateColumns="repeat(4, 1fr)" 
-              gap={4}
-            >
-              {region.prefectures.map(prefecture => (
-                <PrefectureBox 
-                  key={prefecture.value} 
-                  {...prefecture} 
-                />
-              ))}
-            </Grid>
-          </GridItem>
-        </Box>
+        <PrefectureBox key={index} {...region} />
       ))}
-  </Box>   
+    </Box>   
   );
 };
 
-export default PrefecturesContainer;
+export default RegionBox;

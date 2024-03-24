@@ -33,12 +33,11 @@ const Header: React.FC = () => {
           <Box
             position="relative"
             width="50%"
-            height="50%"
           >
             <Link href="/">
               <Image
                 src="/images/header-logo.png"
-                width={120}
+                width={130}
                 height={30}
                 style={{ 
                   objectFit: 'contain',

@@ -87,9 +87,9 @@ const FishHomeBox: React.FC = ({}) => {
       <Box 
         border="0.5px solid"
         boxShadow="md"
-        m={2}
+        m="2px 10px"
         p={2}
-        borderRadius="lg"
+        borderRadius="5"
         background="lightblue"
         borderColor="deepskyblue"
       >

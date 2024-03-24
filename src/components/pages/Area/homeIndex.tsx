@@ -18,7 +18,6 @@ const AreaHomeBox = () => {
       <Grid>
         <GridItem colSpan={12} p={4}>
           <Heading 
-            borderRadius="5" 
             textAlign="center"
             size="lg"
             p={3}
@@ -28,12 +27,12 @@ const AreaHomeBox = () => {
           <AreaItem />
         </GridItem>
       </Grid>
+
       <Box 
-        border="0.5px solid"
         boxShadow="md"
-        m={2}
+        m="2px 10px"
         p={2}
-        borderRadius="lg"
+        borderRadius="5"
         background="lightblue"
         borderColor="deepskyblue"
       >

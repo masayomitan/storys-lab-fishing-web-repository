@@ -19,65 +19,84 @@ import {
   Button
 } from '@chakra-ui/react';
 
-type ArticleBoxProps = {
-  index: number;
+import ArticleItem from '../Article/item/index'
+
+type ArticleData = {
+  id: number;
+  userName: string;
+  userImage: string;
+  title: string;
+  description: string;
 };
 
-const ArticleBox: React.FC<ArticleBoxProps> = ({ index }) => {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/articles/detail/${index + 1}`);
-  };
-
-  return (
-    <Box
-      boxShadow="sm"
-      p={4}
-      h="10rem"
-      border="1px solid"
-      borderRadius="5"
-      _hover={{ bg: "gray.100", cursor: "pointer" }}
-      onClick={handleClick}
-    >
-      <Text>記事情報 {index + 1}</Text>
-    </Box>
-  );
-};
+const articles: ArticleData[] = [
+  {
+    id: 1,
+    userName: "ユーザー名1",
+    userImage: "/",
+    title: "記事のタイトル1",
+    description: "記事の説明1"
+  },
+  {
+    id: 2,
+    userName: "ユーザー名2",
+    userImage: "/",
+    title: "記事のタイトル2",
+    description: "記事の説明2"
+  },
+  {
+    id: 3,
+    userName: "ユーザー名3",
+    userImage: "/",
+    title: "記事のタイトル3",
+    description: "記事の説明3"
+  },
+  {
+    id: 4,
+    userName: "ユーザー名4",
+    userImage: "/",
+    title: "記事のタイトル4",
+    description: "記事の説明4"
+  },
+];
 
 const ArticleHomeBox = () => {
+
   return (
     <Box>
       <Grid>
         <GridItem colSpan={12} p={4}>
           <Heading 
-            border="1px solid"
-            borderRadius="5" 
             textAlign="center"
-            size="md"
+            size="lg"
           >
           記事情報一覧
           </Heading>
-          <Grid 
-          templateColumns="repeat(2, 1fr)" 
-          gap={4}
+          <ArticleItem articles={articles} />
+        </GridItem>
+      </Grid>
+      
+      <Box 
+        border="0.5px solid"
+        boxShadow="md"
+        m="2px 10px"
+        p={2}
+        borderRadius="5"
+        background="lightblue"
+        borderColor="deepskyblue"
+      >
+        <Link href="/areas">
+          <Text
+            fontSize={20}
+            fontWeight="bold"
+            textAlign="center"
+            color="#fff"
           >
-          {Array.from({ length: 6 }, (_, index) => (
-            <ArticleBox
-              key={index}
-              index={index}
-            />
-          ))}
-        </Grid>
-      </GridItem>
-    </Grid>
-    <Box as="footer" w="full" boxShadow="sm" p={4}>
-      <Text textAlign="center">
-        <Link href="/Articles">
             さらに見る
+          </Text>
         </Link>
-      </Text>
-    </Box>
-  </Box>   
+      </Box>
+    </Box>   
   );
 };
 

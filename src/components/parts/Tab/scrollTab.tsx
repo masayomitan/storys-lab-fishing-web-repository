@@ -3,7 +3,6 @@ import { Box, Flex, Button } from '@chakra-ui/react';
 
 const ScrollTab = () => {
   const slideContents = ["ルアー", "リール", "ハリス", "タックル", "まき餌", "その他", "ルアー", "リール", "ハリス", "タックル", "まき餌", "その他"];
-  const colorCodes = ["#008080", "#FFA500", "#00B7C3", "#FFC0CB", "#008000", "#800080"];
 
   return (
     <Box overflowX="auto" w="full" py={2} px={1}>
@@ -14,8 +13,9 @@ const ScrollTab = () => {
             m={1}
             p="4px 17px"
             fontSize="14px"
-            color="white"
-            bg={colorCodes[index % colorCodes.length]}
+            color="black"
+            bg="white"
+            border="2px solid #ADD8E6"
             borderRadius="5px"
           >
             {content}

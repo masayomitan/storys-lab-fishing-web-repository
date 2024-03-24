@@ -19,40 +19,54 @@ import {
   Button
 } from '@chakra-ui/react';
 
-// 実データもこんな感じになる
-const toolCategories = [
-  { id: 1, name: "種別1" },
-  { id: 2, name: "種別2" },
-  { id: 3, name: "種別3" },
-  { id: 4, name: "種別4" },
-  { id: 5, name: "種別5" },
-  { id: 6, name: "種別6" },
-];
 
-type ToolCategoryBoxProps = {
-  data: {
-    id: number,
-    name: string
-  };
+type ToolCategoryData = {
+    id: number;
+    name: string;
 };
 
-const ToolCategoryBox: React.FC<ToolCategoryBoxProps> = ({ data }) => {
+type ToolCategoryProps = {
+  toolCategories: ToolCategoryData[];
+};
+
+// 実データもこんな感じになる
+const toolCategories: ToolCategoryData[] = [
+  { id: 1, name: "ロッド" },
+  { id: 2, name: "リール" },
+  { id: 3, name: "ルアー" },
+  { id: 4, name: "フック" },
+  { id: 5, name: "ライン" },
+  { id: 6, name: "フロート" }
+];
+
+
+const ToolCategoryBox: React.FC<ToolCategoryProps> = ({ toolCategories }) => {
   const router = useRouter();
-  const handleClick = () => {
-    router.push(`/tool-categories/detail/${data.id}`);
+
+  const handleClick = (id) => {
+    router.push(`/tool-categories/detail/${id}`);
   };
 
   return (
-    <Box
-      boxShadow="sm"
-      p={4}
-      h="4rem"
-      border="1px solid"
-      borderRadius="5"
-      _hover={{ bg: "gray.100", cursor: "pointer" }}
-      onClick={handleClick}
-    >
-      <Text>{data.id}, {data.name}</Text>
+    <Box>
+      <Grid 
+        templateColumns="repeat(2, 1fr)" 
+        gap={4}
+      >
+        {toolCategories.map((toolCategory) => (
+        <Box
+          key={toolCategory.id}
+          boxShadow="sm"
+          p={3}
+          border="1px solid"
+          borderRadius="5"
+          borderColor="lightblue"
+          onClick={() => handleClick(toolCategory.id)}
+        >
+          <Text textAlign="center">{toolCategory.name}</Text>
+        </Box>
+      ))}
+      </Grid>
     </Box>
   );
 };
@@ -63,33 +77,15 @@ const ToolCategoryHomeBox = () => {
       <Grid>
         <GridItem colSpan={12} p={4}>
           <Heading 
-            border="1px solid"
-            borderRadius="5" 
             textAlign="center"
-            size="md"
+            size="lg"
+            p={3}
           >
             道具種別情報一覧
-          </Heading>
-          <Grid 
-            templateColumns="repeat(2, 1fr)" 
-            gap={4}
-          >
-            {toolCategories.map((toolCategory: any, index: any) => (
-              <ToolCategoryBox
-                key={index}
-                data={toolCategory}
-              />
-            ))}
-          </Grid>
+          </Heading>  
+          <ToolCategoryBox toolCategories={toolCategories} />
         </GridItem>
       </Grid>
-      <Box as="footer" w="full" boxShadow="sm" p={4}>
-        <Text textAlign="center">
-          <Link href="/ToolCategorys">
-            さらに見る
-          </Link>
-        </Text>
-      </Box>
     </Box>   
   );
 };

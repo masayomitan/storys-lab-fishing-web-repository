@@ -16,9 +16,9 @@ import Layout from '../components/parts/Layout/layout';
 import SearchBar from '../components/parts/SearchBar/index';
 import AreaHomeBox from '../components/pages/Area/homeIndex';
 import FishHomeBox from '../components/pages/Fish/homeIndex';
-import ArticleContainer from '../components/pages/Article/homeIndex';
-import ToolCategoryContainer from '../components/pages/ToolCategory/homeIndex';
-import EventContainer from '../components/pages/Event/homeIndex';
+import ArticleHomeIndex from '../components/pages/Article/homeIndex';
+import ToolCategoryHomeIndex from '../components/pages/ToolCategory/homeIndex';
+import EventHomeIndex from '../components/pages/Event/homeIndex';
 import "./style.css";
 
 const  Home: React.FC = () => {
@@ -55,13 +55,13 @@ const  Home: React.FC = () => {
         <FishHomeBox />
         
         {/* 記事一覧 */}
-        <ArticleContainer />
+        <ArticleHomeIndex />
 
         {/* 道具種別一覧 */}
-        <ToolCategoryContainer />
+        <ToolCategoryHomeIndex />
 
         {/* イベント一覧 */}
-        <EventContainer />
+        <EventHomeIndex />
 
       </Box>
     </Layout>

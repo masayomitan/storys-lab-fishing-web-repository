@@ -10,30 +10,53 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-type EventBoxProps = {
-  index: number;
+import EventItem from '../Event/item/index'
+
+type EventData = {
+  id: number;
+  eventImage: string;
+  title: string;
+  description: string;
 };
 
-const EventBox: React.FC<EventBoxProps> = ({ index }) => {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/events/detail/${index + 1}`);
-  };
-
-  return (
-    <Box
-      boxShadow="sm"
-      p={4}
-      h="10rem"
-      border="1px solid"
-      borderRadius="5"
-      _hover={{ bg: "gray.100", cursor: "pointer" }}
-      onClick={handleClick}
-    >
-      <Text>イベント情報 {index + 1}</Text>
-    </Box>
-  );
-};
+const events: EventData[] = [
+  {
+    id: 1,
+    eventImage: "/",
+    title: "イベントのタイトル1",
+    description: "イベントの説明1"
+  },
+  {
+    id: 2,
+    eventImage: "/",
+    title: "イベントのタイトル2",
+    description: "イベントの説明2"
+  },
+  {
+    id: 3,
+    eventImage: "/",
+    title: "イベントのタイトル3",
+    description: "イベントの説明3"
+  },
+  {
+    id: 4,
+    eventImage: "/",
+    title: "イベントのタイトル4",
+    description: "イベントの説明4"
+  },
+  {
+    id: 5,
+    eventImage: "/",
+    title: "イベントのタイトル5",
+    description: "イベントの説明5"
+  },
+  {
+    id: 6,
+    eventImage: "/",
+    title: "イベントのタイトル6",
+    description: "イベントの説明6"
+  },
+];
 
 const EventHomeBox = () => {
   return (
@@ -41,32 +64,33 @@ const EventHomeBox = () => {
       <Grid>
         <GridItem colSpan={12} p={4}>
           <Heading 
-            border="1px solid"
-            borderRadius="5" 
             textAlign="center"
-            size="md"
+            size="lg"
           >
             イベント情報一覧
           </Heading>
-          <Grid 
-            templateColumns="repeat(2, 1fr)" 
-            gap={4}
-          >
-            {Array.from({ length: 6 }, (_, index) => (
-              <EventBox
-                key={index}
-                index={index}
-              />
-            ))}
-          </Grid>
+          <EventItem events={events} />
         </GridItem>
       </Grid>
-      <Box as="footer" w="full" boxShadow="sm" p={4}>
-        <Text textAlign="center">
-          <Link href="/Events">
+      <Box 
+        border="0.5px solid"
+        boxShadow="md"
+        m="2px 10px"
+        p={2}
+        borderRadius="5"
+        background="lightblue"
+        borderColor="deepskyblue"
+      >
+        <Link href="/events">
+          <Text
+            fontSize={20}
+            fontWeight="bold"
+            textAlign="center"
+            color="#fff"
+          >
             さらに見る
-          </Link>
-        </Text>
+          </Text>
+        </Link>
       </Box>
     </Box>   
   );
