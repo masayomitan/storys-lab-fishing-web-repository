@@ -90,11 +90,11 @@ const SearchBar = () => {
                 m="auto"
               >
                 <Box 
-                  border="1px solid"
+                  
                   borderRadius="10"
                   p={2}
                   h="100"
-                  shadow="base" bg="red.200"
+                  shadow="base" bg="#ADD8E6"
                 >
                   画像
                 </Box>
@@ -106,11 +106,11 @@ const SearchBar = () => {
                 m="auto"
               >
                 <Box 
-                  border="1px solid"
+                  
                   borderRadius="10"
                   p={2}
                   h="100"
-                  shadow="base" bg="red.200"
+                  shadow="base" bg="#ADD8E6"
                 >
                   画像
                 </Box>
@@ -122,11 +122,11 @@ const SearchBar = () => {
                 m="auto"
               >
                 <Box 
-                  border="1px solid"
+                  
                   borderRadius="10"
                   p={2}
                   h="100"
-                  shadow="base" bg="red.200"
+                  shadow="base" bg="#ADD8E6"
                 >
                   画像
                 </Box>
@@ -138,11 +138,11 @@ const SearchBar = () => {
                 m="auto"
               >
                 <Box 
-                  border="1px solid"
+                  
                   borderRadius="10"
                   p={2}
                   h="100"
-                  shadow="base" bg="red.200"
+                  shadow="base" bg="#ADD8E6"
                 >
                   画像
                 </Box>

@@ -13,7 +13,6 @@ const ScrollTab = () => {
             m={1}
             p="4px 17px"
             fontSize="14px"
-            color="black"
             bg="white"
             border="2px solid #ADD8E6"
             borderRadius="5px"

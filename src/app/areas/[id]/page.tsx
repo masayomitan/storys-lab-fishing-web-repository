@@ -7,8 +7,18 @@ import Layout from '../../../components/parts/Layout/layout';
 import FishingSpot from '../../../components/pages/FishingSpot';
 // import { getDataById } from '../../utils/api'
 
+type FishingSpotBoxProps = {
+  id: number;
+  name: string;
+  text: string;
+  tags: Array<{
+    id: number;
+    name: string;
+  }>;
+};
+
 // 実データできたら削除
-const fishingSpots: any = [
+const fishingSpots: FishingSpotBoxProps[] = [
   {
     id: 1,
     name: '名称1',
@@ -144,26 +154,25 @@ const fetchFishingSpotData = async (
 const FishingSpotPage = () => {
   const useParam = useParams()
   const pathId = (useParam) ? useParam.id : null
-  const [data, setData]: any = useState([])
+  const [fishingSpotsData, setFishingSpotsData] = useState<FishingSpotBoxProps[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const result: any = await fetchFishingSpotData(pathId);
-      setData(fishingSpots);
+      await fetchFishingSpotData(pathId);
+      setFishingSpotsData(fishingSpots);
     };
     fetchData();
-  }, [pathId]);
+  }, [fishingSpotsData, pathId]);
 
   // TODO 
-  if (!data) {
+  if (!fishingSpots) {
     return false;
   }
 
   return (
     <Layout>
       <FishingSpot
-        data={data}
-        pathId={pathId}
+        fishingSpots={fishingSpots}
       />
     </Layout>
   );

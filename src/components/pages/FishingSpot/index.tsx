@@ -1,8 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 
-// import "./style.css";
 import {
     Box,
     Flex,
@@ -12,110 +10,64 @@ import {
     Text,
   } from '@chakra-ui/react';
 
+import FishingSpotItemBox from './item/index'
+
 // TODO 型は実データ次第で変更でてくる
 type FishingSpotBoxProps = {
   id: number;
   name: string;
   text: string;
-  tags: [{
-    id: number,
-    name: string,
-  }];
+  tags: Array<{
+    id: number;
+    name: string;
+  }>;
 };
 
-const FishingSpotTmpBox: React.FC<FishingSpotBoxProps> = (data) => {
-  const router = useRouter();
-  const handleClick = () => {
-      router.push(`/fishing-spots/detail/${data.id}`);
-  };
-
-  return (
-    <Box
-      mt={10}
-      mb={10}
-    >
-      <Box
-        boxShadow="sm"
-        p={4}
-        h="10rem"
-        border="1px solid"
-        borderRadius="5"
-        _hover={{ bg: "gray.100", cursor: "pointer" }}
-        onClick={handleClick}
-      >
-        <Text>釣り場情報画像 {data.id}</Text>
-      </Box>
-      <Box>
-        <Text>{data.name}</Text>
-      </Box>
-      <Box>
-        <Flex>
-          {data.tags.map((tag, index) => (
-            <Text 
-              key={index}
-              fontSize="10px"
-              border="1px solid"
-              borderRadius="5"
-              m={1}
-              p={2}
-              >
-                {tag.name}
-              </Text>
-          ))}
-        </Flex>
-      </Box>
-      <Box>
-        <Text
-          fontSize="12px"
-        >
-          {data.text}
-        </Text>
-      </Box>
-    </Box>
-  );
+type FishingSpotBoxComponentProps = {
+  fishingSpots: FishingSpotBoxProps[];
 };
 
-const FishingSpotBox = ({
-  data,
-  pathId
-}: any) => {
-  if (!data) {
-    return false;
+const FishingSpotBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpots }) => {
+
+  if (!fishingSpots) {
+    return null;
   }
+
   return (
     <Box>
       <Grid>
         <GridItem colSpan={12} p={4}>
           <Heading 
-            border="1px solid"
-            borderRadius="5" 
             textAlign="center"
             size="md"
           >
-            エリア情報{pathId}の釣り場情報一覧
+            エリア情報の釣り場情報一覧
           </Heading>
-          <Grid 
-            templateColumns="repeat(2, 1fr)" 
-            gap={4}
-          >
-            {data.map((spot, index) => (
-              <FishingSpotTmpBox
-                  key={spot.id}
-                  id={spot.id}
-                  name={spot.name}
-                  text={spot.text}
-                  tags={spot.tags}
-              />
-            ))}
-          </Grid>
+          <FishingSpotItemBox 
+            fishingSpots={fishingSpots}
+          />
         </GridItem>
       </Grid>
-      <Box as="footer" w="full" boxShadow="sm" p={4}>
-        <Text textAlign="center">
+      <Box 
+        boxShadow="md"
+        m="2px 10px"
+        p={2}
+        borderRadius="5"
+        background="lightblue"
+        borderColor="deepskyblue"
+      >
+        <Link href="/areas">
+          <Text
+            fontSize={20}
+            fontWeight="bold"
+            textAlign="center"
+            color="#fff"
+          >
             さらに見る
-        </Text>
+          </Text>
+        </Link>
       </Box>
-    </Box>   
+    </Box>
   );
 }
 
