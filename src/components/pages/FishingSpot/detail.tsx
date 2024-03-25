@@ -95,10 +95,8 @@ const FishingSpotDetailBox = ({
   return (
     <Box>
       <Heading 
-        border="1px solid"
-        borderRadius="5" 
         textAlign="center"
-        size="md"
+        size="lg"
       >
         エリア情報{pathId}の釣り場情報詳細
       </Heading>

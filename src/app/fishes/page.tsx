@@ -2,14 +2,14 @@
 
 import React from 'react';
 
-import { Container } from '@chakra-ui/react';
+import Layout from '../../components/parts/Layout/layout';
 import Fish from '../../components/pages/Fish';
 
 const FishPage = () => {
   return (
-    <Container>
+    <Layout>
       <Fish />
-    </Container>
+    </Layout>
   );
 }
 
