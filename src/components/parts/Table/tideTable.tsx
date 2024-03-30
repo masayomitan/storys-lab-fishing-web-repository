@@ -1,66 +1,66 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link'
-
 import { Box, Flex, Text, Divider } from '@chakra-ui/react';
-
-// type PrefecturesBoxProps = {
-//   key: number;
-//   value: number;
-//   label: string;
-// };
 
 const TideTable = () => {
   return (
-
-    <Box borderColor="gray.300" borderRadius="md" p={4} width="full" maxWidth="md">
+    
+    <Box
+      borderColor="blue.300"
+      bg="blue.50"
+      borderRadius="lg"
+      p={4}
+      m="10px 0"
+      width="full"
+      maxWidth="md"
+      boxShadow="md"
+      mx="auto"
+    >
       <Box>
-        <Text fontSize="20px">
+        <Text fontSize="2xl" fontWeight="bold" color="blue.700">
           潮時表
         </Text>
       </Box>
 
       <Flex justifyContent="space-between" mb={3}>
-        <Text fontWeight="bold">河口堤防 3月01日（金） 大潮</Text>
-        <Box> {/* This box could be used for the Google Translate icon */}</Box>
+        <Text fontWeight="semibold" color="blue.600">河口堤防 3月01日（金） 大潮</Text>
       </Flex>
 
       <Flex justifyContent="space-between" mb={3}>
-        <Text>日出：06:00</Text>
-        <Text>日入：18:00</Text>
+        <Text color="green.600">日出：06:00</Text>
+        <Text color="orange.500">日入：18:00</Text>
       </Flex>
 
       <Flex justifyContent="space-between" mb={3}>
-        <Text>月出：06:00</Text>
-        <Text>月入：06:00</Text>
+        <Text color="cyan.600">月出：06:00</Text>
+        <Text color="purple.500">月入：06:00</Text>
       </Flex>
 
-      <Divider my={3} />
+      <Divider my={3} borderColor="blue.300" />
 
       <Flex justifyContent="space-between" mb={3}>
-        <Text>潮位・潮時</Text>
-      </Flex>
-
-      <Flex justifyContent="space-between" mb={3}>
-        <Text>満潮</Text>
-        <Text>干潮</Text>
-        <Text>満潮</Text>
+        <Text fontWeight="medium" color="blue.600">潮位・潮時</Text>
       </Flex>
 
       <Flex justifyContent="space-between" mb={3}>
-        <Text>180cm</Text>
-        <Text>50cm</Text>
-        <Text>170cm</Text>
+        <Text color="blue.700">満潮</Text>
+        <Text color="blue.700">干潮</Text>
+        <Text color="blue.700">満潮</Text>
+      </Flex>
+
+      <Flex justifyContent="space-between" mb={3}>
+        <Text color="teal.800">180cm</Text>
+        <Text color="teal.800">50cm</Text>
+        <Text color="teal.800">170cm</Text>
       </Flex>
 
       <Flex justifyContent="space-between">
-        <Text>06:00.</Text>
-        <Text>12:00.</Text>
-        <Text>18:00</Text>
+        <Text color="gray.700">06:00</Text>
+        <Text color="gray.700">12:00</Text>
+        <Text color="gray.700">18:00</Text>
       </Flex>
 
       <Flex justifyContent="space-between" mt={3}>
-        <Text>月齢 15.10</Text>
+        <Text fontWeight="medium" color="teal.700">月齢 15.10</Text>
       </Flex>
     </Box>
   );

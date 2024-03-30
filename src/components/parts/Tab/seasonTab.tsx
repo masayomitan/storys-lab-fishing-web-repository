@@ -124,49 +124,81 @@ const SeasonFishesTab: React.FC<FishesProps> = ({fishes}) => {
                   </GridItem>
                 ))}
               </Grid>
-              <Box as="footer" w="full" boxShadow="sm" p={4}>
-                <Text 
-                  border="1px solid"
-                  borderRadius="5" 
-                  textAlign="center"
-                  m="10px 0"
+              <Box
+                border="0.5px solid"
+                boxShadow="md"
+                m="10px"
+                p={2}
+                borderRadius="5"
+                background="lightblue"
+                borderColor="deepskyblue"
+              >
+                <Box>
+                  <Text
+                    fontSize={20}
+                    fontWeight="bold"
+                    textAlign="center"
+                    color="#fff"
                   >
                     さらに見る
-                </Text>
+                  </Text>
+                </Box>
               </Box>
             </TabPanel>
 
             <TabPanel>
             <Grid templateColumns="repeat(2, 1fr)" gap={4}>
               {fishes.map((fish) => (
-                <GridItem key={fish.id} colSpan={1}>
-                  <Box 
-                    boxShadow="sm" 
-                    p={4} 
-                    h="10rem"
-                    border="1px solid" 
-                    borderRadius="5" 
-                    _hover={{ 
-                      bg: "gray.100", 
-                      cursor: "pointer" 
-                    }}
+                <GridItem key={fish.id}>
+                  <Box
+                    boxShadow="lg"
+                    h="8rem"
+                    mt={4}
+                    mb={4}
+                    position="relative"
                   >
-                    <Text>夏魚の画像 {fish.id}</Text>
+                    <Image 
+                      src=""
+                      width={200}
+                      height={100}
+                      style={{ 
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                      onClick={() => handleClick(fish)}
+                      alt={`魚画像`}
+                    />
                   </Box>
                   <Text>夏魚の{fish.name}</Text>
-                  <Text>夏魚の{fish.text}</Text>
+                  <Text fontSize="14px"
+                    style={{
+                      letterSpacing: '0.05em',
+                      lineHeight: '1.6',
+                    }}
+                  >夏魚の{fish.text}</Text>
                 </GridItem>
               ))}
               </Grid>
-              <Box as="footer" w="full" boxShadow="sm" p={4}>
-                <Text 
-                  border="1px solid"
-                  borderRadius="5" 
-                  textAlign="center"
-                  m="10px 0"
+              <Box
+                border="0.5px solid"
+                boxShadow="md"
+                m="10px"
+                p={2}
+                borderRadius="5"
+                background="lightblue"
+                borderColor="deepskyblue"
+              >
+                <Box>
+                  <Text
+                    fontSize={20}
+                    fontWeight="bold"
+                    textAlign="center"
+                    color="#fff"
                   >
-                  さらに見る
-                </Text>
+                    さらに見る
+                  </Text>
+                </Box>
               </Box>
             </TabPanel>
 
@@ -174,33 +206,57 @@ const SeasonFishesTab: React.FC<FishesProps> = ({fishes}) => {
               <Grid templateColumns="repeat(2, 1fr)" gap={4}>
                 {fishes.map((fish) => (
                   <GridItem key={fish.id} colSpan={1}>
-                    <Box 
-                      boxShadow="sm" 
-                      p={4} 
-                      h="10rem"
-                      border="1px solid" 
-                      borderRadius="5" 
-                      _hover={{ 
-                        bg: "gray.100", 
-                        cursor: "pointer" 
-                      }}
+                    <Box
+                      boxShadow="lg"
+                      h="8rem"
+                      mt={4}
+                      mb={4}
+                      position="relative"
                     >
-                      <Text>秋魚の画像 {fish.id}</Text>
+                    <Image 
+                      src=""
+                      width={200}
+                      height={100}
+                      style={{ 
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                      onClick={() => handleClick(fish)}
+                      alt={`魚画像`}
+                    />
                     </Box>
                     <Text>秋魚の{fish.name}</Text>
-                    <Text>秋魚の{fish.text}</Text>
+                    <Text fontSize="14px"
+                      style={{
+                        letterSpacing: '0.05em',
+                        lineHeight: '1.6',
+                      }}
+                    >
+                      秋魚の{fish.text}
+                    </Text>
                   </GridItem>
                 ))}
               </Grid>
-              <Box as="footer" w="full" boxShadow="sm" p={4}>
-                <Text 
-                  border="1px solid"
-                  borderRadius="5" 
-                  textAlign="center"
-                  m="10px 0"
+              <Box
+                border="0.5px solid"
+                boxShadow="md"
+                m="10px"
+                p={2}
+                borderRadius="5"
+                background="lightblue"
+                borderColor="deepskyblue"
+              >
+                <Box>
+                  <Text
+                    fontSize={20}
+                    fontWeight="bold"
+                    textAlign="center"
+                    color="#fff"
                   >
-                  さらに見る
-                </Text>
+                    さらに見る
+                  </Text>
+                </Box>
               </Box>
             </TabPanel>
 
@@ -208,33 +264,57 @@ const SeasonFishesTab: React.FC<FishesProps> = ({fishes}) => {
             <Grid templateColumns="repeat(2, 1fr)" gap={4}>
               {fishes.map((fish) => (
                 <GridItem key={fish.id} colSpan={1}>
-                  <Box 
-                    boxShadow="sm" 
-                    p={4} 
-                    h="10rem"
-                    border="1px solid" 
-                    borderRadius="5" 
-                    _hover={{ 
-                      bg: "gray.100", 
-                      cursor: "pointer" 
-                    }}
+                  <Box
+                    boxShadow="lg"
+                    h="8rem"
+                    mt={4}
+                    mb={4}
+                    position="relative"
                   >
-                    <Text>冬魚の画像 {fish.id}</Text>
+                  <Image 
+                    src=""
+                    width={200}
+                    height={100}
+                    style={{ 
+                      objectFit: 'cover',
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                    onClick={() => handleClick(fish)}
+                    alt={`魚画像`}
+                  />
                   </Box>
                   <Text>冬魚の{fish.name}</Text>
-                  <Text>冬魚の{fish.text}</Text>
+                  <Text fontSize="14px"
+                    style={{
+                      letterSpacing: '0.05em',
+                      lineHeight: '1.6',
+                    }}
+                  >
+                    冬魚の{fish.text}
+                  </Text>
                 </GridItem>
               ))}
               </Grid>
-              <Box as="footer" w="full" boxShadow="sm" p={4}>
-                <Text 
-                  border="1px solid"
-                  borderRadius="5" 
-                  textAlign="center"
-                  m="10px 0"
+              <Box
+                border="0.5px solid"
+                boxShadow="md"
+                m="10px"
+                p={2}
+                borderRadius="5"
+                background="lightblue"
+                borderColor="deepskyblue"
+              >
+                <Box>
+                  <Text
+                    fontSize={20}
+                    fontWeight="bold"
+                    textAlign="center"
+                    color="#fff"
                   >
-                  さらに見る
-                </Text>
+                    さらに見る
+                  </Text>
+                </Box>
               </Box>
             </TabPanel>
 

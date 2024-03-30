@@ -55,7 +55,7 @@ const FishingSpotItemBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpo
             <Text fontWeight="bold">{fishingSpot.name}</Text>
           </Box>
           <Box>
-            <Flex>
+            <Flex wrap="wrap">
               {fishingSpot.tags.map((tag, index) => (
                 <Text 
                   key={index}
