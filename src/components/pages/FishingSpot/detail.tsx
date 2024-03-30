@@ -97,11 +97,20 @@ const FishingSpotDetailBox = ({
       <Heading 
         textAlign="center"
         size="lg"
+        m={2}
       >
-        エリア情報{pathId}の釣り場情報詳細
+        エリア{pathId}の釣り場情報詳細
       </Heading>
-      <Box boxShadow="sm" p={4} position="relative">
-        <Box w="100%" h="15rem" textAlign="center">
+      <Box 
+        boxShadow="md"
+        p={4} 
+        position="relative"
+      >
+        <Box 
+          w="100%"
+          h="15rem" 
+          textAlign="center"
+        >
           <Image
             src="/"
             layout="fill"
@@ -118,22 +127,12 @@ const FishingSpotDetailBox = ({
               釣り場名称
             </Text>
           </Box>
-          <Box 
-            border="1px solid"
-            borderRadius="5" 
-            textAlign="center"
-            fontSize="md"
-          >
-            魚情報一覧
-          </Box>
           <Box p={4}>
-            <Grid templateColumns="repeat(12, 1fr)" gap={4}>
-              <GridItem colSpan={12}>
-                <SeasonFishesTab
-                  fishes={fishes}
-                />
-              </GridItem>
-            </Grid>
+            
+            <SeasonFishesTab
+              fishes={fishes}
+            />
+             
           </Box>
           <Box>
             <Text 

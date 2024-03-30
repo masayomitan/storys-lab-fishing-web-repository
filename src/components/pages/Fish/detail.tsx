@@ -60,7 +60,17 @@ const dishData: any = [
   },
   {
     id: 5,
-    name: '名称4',
+    name: '名称5',
+    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
+    tags: [
+      { id: 1, name: '材料1 100ml' },
+      { id: 2, name: '材料2 5cc' },
+      { id: 3, name: '材料3 10個' },
+    ],
+  },
+  {
+    id: 6,
+    name: '名称6',
     text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
     tags: [
       { id: 1, name: '材料1 100ml' },
@@ -73,73 +83,71 @@ const dishData: any = [
 const FishDetailBox = () => {
   return (
     <Box p={4}>
-      <Heading 
-        border="1px solid"
-        borderRadius="5" 
-        textAlign="center"
-        size="md"
-      >
-        魚詳細情報
-      </Heading>
       <Box boxShadow="sm" p={4} position="relative">
         <Box w="100%" h="15rem" textAlign="center">
           <Image
             src="/"
             layout="fill"
             objectFit="cover"
-            alt="釣り場詳細画像"
+            alt="魚画像"
           />
         </Box>
       </Box>
 
       <Box>
-        <Box>
-          <Text>名称</Text>
-          <Text>魚種</Text>
-          <Text>サイズ</Text>
-          <Text>重量</Text>
-          <Text>主な生息地</Text>
+        <Box mt={5}>
+          <Text mb={2} color="rgb(108, 117, 125)">名称: </Text>
+          <Text mb={2} color="rgb(108, 117, 125)">魚種</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">サイズ</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">重量</Text>
+          <Text color="rgb(108, 117, 125)">主な生息地</Text>
         </Box>
         <Box>
           <Flex wrap="wrap">
             <Text 
-              border="1px solid"
-              borderRadius="5"
               m={1}
-              p={2}
+              p="4px 17px"
+              fontSize="14px"
+              bg="white"
+              border="2px solid #ADD8E6"
+              borderRadius="5px"
             >
               堤防
             </Text>
             <Text 
-              border="1px solid"
-              borderRadius="5"
               m={1}
-              p={2}
+              p="4px 17px"
+              fontSize="14px"
+              bg="white"
+              border="2px solid #ADD8E6"
+              borderRadius="5px"
             >
               磯
             </Text>
             <Text 
-              border="1px solid"
-              borderRadius="5"
               m={1}
-              p={2}
+              p="4px 17px"
+              fontSize="14px"
+              bg="white"
+              border="2px solid #ADD8E6"
+              borderRadius="5px"
             >
               砂浜
             </Text>
           </Flex>
           <Box style={{ margin: '10px 0' }}>
-              <Text
-                fontSize="18px"
-                style={{
-                  letterSpacing: '0.05em',
-                  lineHeight: '1.6',
-                }}
-              >
-                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-              </Text>
-            </Box>
+            <Text
+              fontSize="16px"
+              style={{
+                letterSpacing: '0.05em',
+                lineHeight: '1.6',
+              }}
+            >
+              魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト
+              魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト
+              魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト
+            </Text>
+          </Box>
         </Box>
         <FishingMethodBox />
 

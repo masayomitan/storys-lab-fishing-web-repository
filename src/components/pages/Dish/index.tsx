@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+
 import {
   Box,
   Flex,
@@ -36,7 +38,10 @@ const DishBox = ({ data }) => {
 
   return (
     <Box mt={10} mb={10}>
-      <Heading border="1px solid" borderRadius="5" textAlign="center" size="md">
+      <Heading
+        textAlign="center" 
+        size="md"
+      >
         おすすめ料理
       </Heading>
 
@@ -44,18 +49,43 @@ const DishBox = ({ data }) => {
         {data.map((dish, index) => (
           <Box key={index}>
             <Box
-              boxShadow="sm"
+              boxShadow="lg"
               p={4}
               h="10rem"
-              border="1px solid"
-              borderRadius="5"
-              _hover={{ bg: "gray.100", cursor: "pointer" }}
               onClick={() => handleClick(dish)}
             >
-              <Text>料理情報画像 {dish.id}</Text>
+              <Image
+                src="/"
+                width={100}
+                height={100}
+                style={{ 
+                  objectFit: 'cover',
+                }}
+                alt="料理画像"
+              />
             </Box>
-            <Text>{dish.name}</Text>
-            <Text>{dish.text}</Text>
+            <Box
+              m={4}
+            >
+              <Text
+                fontSize="16px"
+                style={{
+                  letterSpacing: '0.05em',
+                  lineHeight: '1.6',
+                }}
+              >
+                {dish.name}
+              </Text>
+              <Text
+                fontSize="14px"
+                style={{
+                  letterSpacing: '0.05em',
+                  lineHeight: '1.6',
+                }}
+              >
+                {dish.text}
+              </Text>
+            </Box>
           </Box>
         ))}
       </Grid>
@@ -63,10 +93,10 @@ const DishBox = ({ data }) => {
       {/* Modal */}
       {selectedDish && (
         <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={true}>
-        <ModalOverlay
-          bg="rgba(0, 0, 0, 0.6)"
-          onClick={onClose}
-        />
+          <ModalOverlay
+            bg="rgba(0, 0, 0, 0.6)"
+            onClick={onClose}
+          />
           <ModalContent
             margin="auto"
             mt="10%"
@@ -85,13 +115,31 @@ const DishBox = ({ data }) => {
                   alt={selectedDish.name + " 画像のaltタグ名"}
                   borderRadius="md"
                 />
-                <Text>{selectedDish.name}</Text>
+                <Text
+                  fontSize="20px"
+                  mb={1} 
+                >
+                  {selectedDish.name}
+                </Text>
                 {selectedDish.tags.map((tag, index) => (
-                  <Text key={index}>{tag.name}</Text>
+                  <Text 
+                    key={index}
+                    mb={1} 
+                    color="rgb(108, 117, 125)"
+                  >
+                    {tag.name}
+                  </Text>
                 ))}
                 <Text 
                   h="15rem"
-                  mt={4}>{selectedDish.text}
+                  mt={4}
+                  fontSize="16px"
+                  style={{
+                    letterSpacing: '0.05em',
+                    lineHeight: '1.6',
+                  }}
+                >
+                  {selectedDish.text}
                 </Text>
               </Flex>
             </ModalBody>

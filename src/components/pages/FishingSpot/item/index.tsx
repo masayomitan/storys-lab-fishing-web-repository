@@ -44,11 +44,11 @@ const FishingSpotItemBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpo
             <Image
               src=""
               style={{ 
-                  objectFit: 'cover',
-                  width: '100%',
-                  height: 'auto',
+                objectFit: 'cover',
+                width: '100%',
+                height: 'auto',
               }}
-              alt={`釣り場画像 ${fishingSpot.id}`}
+              alt={`釣り場画像`}
             />
           </Box>
           <Box>

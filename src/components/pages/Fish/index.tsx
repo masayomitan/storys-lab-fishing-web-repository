@@ -44,7 +44,6 @@ const FishBox = () => {
   return (
     <Box mt={10} mb={10}>
       <Heading 
-        borderRadius="5" 
         textAlign="center"
         size="lg"
         p={3}
