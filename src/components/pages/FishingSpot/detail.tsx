@@ -85,7 +85,7 @@ const FishingSpotDetailBox = ({
                   key={index}
                   fontSize="16px"
                   border="2px solid"
-                  borderRadius="5"
+                  borderRadius="lg"
                   borderColor="#ADD8E6"
                   m={2}
                   p="3px 5px"
@@ -113,11 +113,11 @@ const FishingSpotDetailBox = ({
             <Box 
               m="10px 0"
               bg="gray.100"
+              borderRadius="10"
             >
               <Text
                 fontSize="16px"
-                p="5px"
-                borderRadius="5px"
+                p={4}
                 style={{
                   letterSpacing: '0.05em',
                   lineHeight: '1.6',

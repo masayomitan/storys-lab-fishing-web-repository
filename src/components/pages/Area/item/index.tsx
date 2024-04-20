@@ -40,7 +40,7 @@ const AreaItem: React.FC = () => {
               key={prefecture.value}
               shadow="md"
               m={2}
-              borderRadius="5"
+              borderRadius="md"
               onClick={handleClick(prefecture)}
               borderColor="gray.500"
             >

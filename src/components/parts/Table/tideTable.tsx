@@ -12,7 +12,7 @@ const TideTable = () => {
       m="10px 0"
       width="full"
       maxWidth="md"
-      boxShadow="md"
+      boxShadow="lg"
       mx="auto"
     >
       <Box>

@@ -24,23 +24,29 @@ const FishBox: React.FC<any> = ({ index }) => {
 
   return (
     <Box>
-      <Box 
+      <Box
+        boxShadow="lg"
         w="100%" 
-        h="8rem" 
-        bgColor="teal.600"
-        p="10" 
-        border="1px solid" 
+        h="8rem"
         textAlign="center"
         onClick={handleClick}
       >
-        <Text>魚情報 {index + 1}</Text>
+        <Image
+          src=""
+          style={{ 
+            objectFit: 'cover',
+            width: '100%',
+            height: 'auto',
+          }}
+          alt={`魚画像`}
+        />
       </Box>
       <Box>
         <Text>
           名称
         </Text>
         <Text>
-          テキスト
+          テキストテキストテキストテキストテキストテキスト
         </Text>
       </Box>
     </Box>
@@ -52,7 +58,7 @@ const ToolDetailBox: React.FC<any> = () => {
 
   return (
     <Box>
-      <Box gap={4} m={10} p={4}>
+      <Box gap={4} p={4}>
         <Box boxShadow="sm" p={4} position="relative">
           <Box w="100%" h="250px" textAlign="center">
             <Image
@@ -108,30 +114,90 @@ const ToolDetailBox: React.FC<any> = () => {
             全長
           </Text>
         </Box>
-        <Box>
-
-        <Grid 
-          templateColumns="repeat(2, 1fr)" 
-          gap={4}
+        <Box
+          borderColor="blue.300"
+          bg="blue.50"
+          borderRadius="lg"
+          p={4}
+          m="10px 0"
+          boxShadow="lg"
+          mx="auto"
+          h="80px"
         >
-          {Array.from({ length: 3 }, (_, index) => (
-            <FishBox
-              key={index}
-              index={index} 
-            />
-          ))}
-        </Grid>
-        <Box as="footer" w="full" boxShadow="sm" p={4}>
-        <Text textAlign="center">
-          <Link href="/fishes">
-            さらに見る
-          </Link>
-        </Text>
-      </Box>
+          バナー商品情報
         </Box>
+        <Box
+          borderColor="blue.300"
+          bg="blue.50"
+          borderRadius="lg"
+          p={4}
+          m="10px 0"
+          boxShadow="lg"
+          mx="auto"
+          h="80px"
+        >
+          バナー商品情報
+        </Box>
+        <Box 
+          m="15px 0"
+          bg="gray.100"
+          borderRadius="10"
+        >
+          <Text
+            fontSize="16px"
+            p={4}
+            style={{
+              letterSpacing: '0.05em',
+              lineHeight: '1.6',
+            }}
+          >
+            テキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキスト
+            テキストテキストテキストテキストテキストテキスト
+          </Text>
+        </Box>
+
+        <Box>
+          <Grid 
+            templateColumns="repeat(2, 1fr)" 
+            gap={4}
+          >
+            {Array.from({ length: 3 }, (_, index) => (
+              <FishBox
+                key={index}
+                index={index} 
+              />
+            ))}
+          </Grid>
+
+          <Box 
+            border="0.5px solid"
+            boxShadow="md"
+            m="2px 10px"
+            p={2}
+            borderRadius="5"
+            background="lightblue"
+            borderColor="deepskyblue"
+          >
+            <Link href="/fishes">
+              <Text
+                fontSize={20}
+                fontWeight="bold"
+                textAlign="center"
+                color="#fff"
+              >
+                さらに見る
+              </Text>
+            </Link>
+          </Box>
+        </Box>
+
       </Box>
+
        {/* 購入ボタン */}
-       <Flex
+      <Flex
         position="fixed"
         bottom="0"
         w="100%"
@@ -140,13 +206,16 @@ const ToolDetailBox: React.FC<any> = () => {
         mb="10px"
         justifyContent="center"
         alignItems="center"
-        bg="#e5524e"
-        boxShadow="sm"
-        borderRadius="5" 
+        bg="blue.300"
+        borderRadius="md"
+        border="2px"
+        borderColor="blue.300"
       >
         <Button
-          color="#fff" 
-          fontSize="20px" 
+          color="#fff"
+          w="100%"
+          bg="blue.300"
+          fontSize="20px"
           shadow="md"
         >
           購入する

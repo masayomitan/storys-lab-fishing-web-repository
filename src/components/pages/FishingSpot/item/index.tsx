@@ -65,7 +65,6 @@ const FishingSpotItemBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpo
                   borderRadius="5px"
                   m={1}
                   p={1}
-                  
                 >
                   {tag.name}
                 </Text>
