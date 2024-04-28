@@ -14,17 +14,27 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
 ## ファイル構成
 
-トップをデフォルトのsrc/app/page.tsx
+トップはデフォルトのsrc/app/page.tsx
 
-component/pageは各々のページのレイアウト
-component/partsは各パーツで分割
+## app/~
+ページの定義
 
-index.tsxとstyle.cssをセットで置く
+## component/pages/~
+app/で定義したページのレンダー
+
+## component/parts
+各パーツのコンポーネント
+
+## hooks
+hooksの共通処理
+
+## libs
+ライブラリ置き場
+
+## models
+型、モデル、実行アクションの定義
+
+## utils
+どこにも属さない共通関数
