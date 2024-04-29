@@ -1,4 +1,4 @@
-export type FishingSpotBoxProps = {
+type FishingSpotBoxProps = {
   id: number;
   name: string;
   text: string;
@@ -7,7 +7,7 @@ export type FishingSpotBoxProps = {
     name: string;
   }>;
 };
-  
-export type FishingSpotBoxComponentProps = {
+
+type FishingSpotBoxComponentProps = {
   fishingSpots: FishingSpotBoxProps[];
 };

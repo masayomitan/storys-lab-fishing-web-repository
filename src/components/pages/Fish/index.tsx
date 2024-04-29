@@ -1,61 +1,58 @@
-import React from 'react';
-import Link from 'next/link'
-
-import {
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import axiosInstance from '../../../libs/api_clients/base';
+import { FISH } from '../../../constants/url';
+import { 
   Box,
-  Flex,
-  Grid,
-  GridItem,
   Heading,
   Text
 } from '@chakra-ui/react';
-
 import FishItemBox from './item/index';
 
-const fishes: any = [
-  {
-    id: 1,
-    name: "魚1",
-    image: "/",
-    area: "主なエリア1",
-  },
-  {
-    id: 2,
-    name: "魚2",
-    image: "/",
-    area: "主なエリア2",
-  },
-  {
-    id: 3,
-    name: "魚3",
-    image: "/",
-    area: "主なエリア3",
-  },
-  {
-    id: 4,
-    name: "魚4",
-    image: "/",
-    area: "主なエリア4",
-  },
-];
-
+const getFishes = async () => {
+  try {
+    const res = await axiosInstance.get(FISH);
+    return res.data;
+  } catch (error) {
+    console.error('Error fetching fishes:', error);
+    throw error;
+  }
+}
 
 const FishBox = () => {
+  const [fishes, setFishes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchFishes = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getFishes();
+        setFishes(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFishes();
+  }, []);
+
   return (
     <Box mt={10} mb={10}>
-      <Heading 
-        textAlign="center"
-        size="lg"
-        p={3}
-      >
+      <Heading textAlign="center" size="lg" p={3}>
         魚一覧
       </Heading>
 
-      <FishItemBox 
-        // fishes={fishes}
-      />
+      {isLoading ? (
+        <Text textAlign="center">読み込み中...</Text>
+      ) : (
+        <FishItemBox fishes={fishes} />
+      )}
 
-      <Box 
+      <Box
         border="0.5px solid"
         boxShadow="md"
         m="2px 10px"

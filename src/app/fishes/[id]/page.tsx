@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 
-import Layout from '../../../../components/parts/Layout/layout';
-import FishDetail from '../../../../components/pages/Fish/detail'
+import Layout from '../../../components/parts/Layout/layout';
+import FishDetail from '../../../components/pages/Fish/detail'
 import { useParams } from "next/navigation";
 
 

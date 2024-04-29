@@ -10,10 +10,11 @@ import {
 } from '@chakra-ui/react';
 
 
-const FishHomeBox: React.FC = ({}) => {
+const FishItemBox: React.FC<Fishes> =({ fishes }) => {
+  console.log(fishes)
   const router = useRouter();
   const handleClick = (id) => {
-    router.push(`/fishes/detail/${id}`);
+    router.push(`/fishes/${id}`);
   };
   return (
     <Box>
@@ -21,14 +22,14 @@ const FishHomeBox: React.FC = ({}) => {
         templateColumns="repeat(1, 1fr)" 
         gap={4}
       >
-        {Array.from({ length: 6 }, (_, index) => (
+        {fishes.map((fish, index) => (
           <Box 
             key={index}
             m={3}
             p={3}
             boxShadow="md"
             textAlign="center"
-            onClick={handleClick}
+            onClick={() => handleClick(fish.id)}
           >
             <Flex justifyContent="space-between" alignItems="center">
               <Box
@@ -45,7 +46,7 @@ const FishHomeBox: React.FC = ({}) => {
                 />
               </Box>
               <Box>
-                <Text textAlign="center" mb={2} >名称 {index + 1}</Text>
+                <Text textAlign="center" mb={2} >{fish.name}</Text>
                 <Text textAlign="center">主なエリア {index + 1}</Text>
               </Box>
             </Flex>
@@ -56,4 +57,4 @@ const FishHomeBox: React.FC = ({}) => {
   );
 };
 
-export default FishHomeBox;
+export default FishItemBox;
