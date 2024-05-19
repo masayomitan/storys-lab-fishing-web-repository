@@ -59,6 +59,7 @@ const AreaItem: React.FC = () => {
               <Text fontWeight="bold">{prefecture.label}</Text>
             </VStack>
           ))}
+
         </Grid>
       }
     </Box>
