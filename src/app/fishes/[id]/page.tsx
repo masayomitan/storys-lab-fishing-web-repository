@@ -21,7 +21,9 @@ const FishDetailPage = () => {
 
   return (
     <Layout>
-      <FishDetail />
+      <FishDetail 
+        fishId={fishId}
+      />
     </Layout>
   );
 }

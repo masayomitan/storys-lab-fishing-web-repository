@@ -15,7 +15,7 @@ import {
 import Layout from '../components/parts/Layout/layout';
 import SearchBar from '../components/parts/SearchBar/index';
 import AreaHomeBox from '../components/pages/Area/homeIndex';
-import FishHomeBox from '../components/pages/Fish/homeIndex';
+import FishBox from '../components/pages/Fish/index';
 import ArticleHomeIndex from '../components/pages/Article/homeIndex';
 import ToolCategoryHomeIndex from '../components/pages/ToolCategory/homeIndex';
 import EventHomeIndex from '../components/pages/Event/homeIndex';
@@ -52,7 +52,7 @@ const  Home: React.FC = () => {
         <AreaHomeBox />
 
         {/* 魚一覧 */}
-        <FishHomeBox />
+        <FishBox />
         
         {/* 記事一覧 */}
         <ArticleHomeIndex />

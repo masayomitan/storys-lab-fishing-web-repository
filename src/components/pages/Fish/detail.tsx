@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-// import "./style.css";
+import axiosInstance from '../../../libs/api_clients/base';
 import Image from 'next/image';
 import FishingMethodBox from '../FishingMethod'
 import DishBox from '../Dish'
+import { FISH, FISHES } from '../../../constants/url';
 
 import { 
   Flex,
@@ -80,7 +81,43 @@ const dishData: any = [
   },
 ];
 
-const FishDetailBox = () => {
+const getFishById = async (id: number) => {
+  try {
+    const res = await axiosInstance.get(FISHES + "/" + id);
+    return res.data;
+  } catch (error) {
+    console.error('Error fetching fishes:', error);
+    throw error;
+  }
+}
+
+const FishDetailBox = (data: any) => {
+  const fishId = data.fishId
+
+  const [fish, setFish] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (fishId === null) return
+    console.log(fishId)
+    const fetchFish = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getFishById(fishId);
+        setFish(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchFish();
+  }, [fishId]);
+
+  console.log(fish)
+
   return (
     <Box p={4}>
       <Box boxShadow="sm" p={4} position="relative">

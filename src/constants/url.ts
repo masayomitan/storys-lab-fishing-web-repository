@@ -1,4 +1,6 @@
 
 
 
-export const FISH: string = '/fishes'
+export const FISHES: string = '/fishes'
+
+export const FISH: string = '/fishes/'

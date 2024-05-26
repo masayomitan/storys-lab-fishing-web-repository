@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import axiosInstance from '../../../libs/api_clients/base';
-import { FISH } from '../../../constants/url';
+import { FISH, FISHES } from '../../../constants/url';
 import { 
   Box,
   Heading,
@@ -11,7 +11,7 @@ import FishItemBox from './item/index';
 
 const getFishes = async () => {
   try {
-    const res = await axiosInstance.get(FISH);
+    const res = await axiosInstance.get(FISHES);
     return res.data;
   } catch (error) {
     console.error('Error fetching fishes:', error);
