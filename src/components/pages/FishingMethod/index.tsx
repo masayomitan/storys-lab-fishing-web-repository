@@ -9,58 +9,61 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
+import { FishingMethod } from '../../../types/fishingMethod';
 
+interface FishingMethodBoxProps {
+  data: FishingMethod[];
+}
 
-const FishingMethodBox = () => {
+const FishingMethodBox: React.FC<FishingMethodBoxProps> = ({ data }) => {
+
   const { isOpen, onToggle } = useDisclosure();
+  const [showText, setShowText] = useState(data.map(() => false));
 
-  const [showText, setShowText] = useState([false, false, false, false]);
+  const representativeMethod = data.find(method => method.is_traditional);
+  const otherMethods = data.filter(method => !method.is_traditional);
 
-  const blockTexts = [
-    'テキスト1',
-    'テキスト2',
-    'テキスト3',
-    'テキスト4'
-  ];
-  const toggleText = (index) => {
+  const toggleText = (index: number) => {
     setShowText(showText.map((item, i) => (i === index ? !item : item)));
   };
 
   return (
     <Box>
-      <Button 
-        borderRadius="5"
-        textAlign="center"
-        w="100%"
-        h="35px"
-        border="2px solid #ADD8E6"
-        onClick={onToggle}
-        rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-      >
-        <Box fontSize="md">
-          その魚の代表的な釣り方
-        </Box>
-      </Button>
-      <Box p={4}>
-        <Collapse in={isOpen} animateOpacity>
-          <Box
-            p={4}
-            mt={4}
+      {representativeMethod && (
+        <>
+          <Button 
+            borderRadius="5"
+            textAlign="center"
+            w="100%"
+            h="35px"
+            border="2px solid #ADD8E6"
+            onClick={onToggle}
+            rightIcon={isOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
           >
-            <Text
-              fontSize="16px"
-              style={{
-                letterSpacing: '0.05em',
-                lineHeight: '1.6',
-              }}
-            >
-              代表的な釣り方テキスト代表的な釣り方テキスト代表的な釣り方テキスト
-              代表的な釣り方テキスト代表的な釣り方テキスト代表的な釣り方テキスト
-              代表的な釣り方テキスト代表的な釣り方テキスト代表的な釣り方テキスト
-            </Text>
+            <Box fontSize="md">
+              その魚の代表的な釣り方
+            </Box>
+          </Button>
+          <Box p={4}>
+            <Collapse in={isOpen} animateOpacity>
+              <Box
+                p={4}
+                mt={4}
+              >
+                <Text
+                  fontSize="16px"
+                  style={{
+                    letterSpacing: '0.05em',
+                    lineHeight: '1.6',
+                  }}
+                >
+                  {representativeMethod.description}
+                </Text>
+              </Box>
+            </Collapse>
           </Box>
-        </Collapse>
-      </Box>
+        </>
+      )}
       <Box>
         <Box 
           textAlign="center"
@@ -69,8 +72,8 @@ const FishingMethodBox = () => {
           他の釣り方
         </Box>
         <Box>
-          {blockTexts.map((text, index) => (
-            <Box key={index} m={2}>
+          {otherMethods.map((method, index) => (
+            <Box key={method.ID} m={2}>
               <Button 
                 textAlign="center"
                 w="100%"
@@ -80,7 +83,7 @@ const FishingMethodBox = () => {
                 rightIcon={showText[index] ? <ChevronUpIcon /> : <ChevronDownIcon />}
               >
                 <Text fontSize="md">
-                  釣り方 {index + 1}
+                  {method.name}
                 </Text>
               </Button>
             
@@ -91,9 +94,7 @@ const FishingMethodBox = () => {
                   rounded="md"
                   shadow="md"
                 >
-                  他の釣り方テキスト他の釣り方テキスト他の釣り方テキスト
-                  他の釣り方テキスト他の釣り方テキスト他の釣り方テキスト
-                  他の釣り方テキスト他の釣り方テキスト他の釣り方テキスト
+                  {method.description}
                 </Box>
               </Collapse>
             </Box>

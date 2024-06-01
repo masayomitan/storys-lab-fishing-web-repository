@@ -5,6 +5,9 @@ import Image from 'next/image';
 import FishingMethodBox from '../FishingMethod'
 import DishBox from '../Dish'
 import { FISH, FISHES } from '../../../constants/url';
+import { getFishById } from '../../../models/fish/action';
+import { Fish } from '../../../types/fish';
+
 
 import { 
   Flex,
@@ -17,84 +20,10 @@ import {
 } from '@chakra-ui/react';
 
 
-// 実データできたら削除
-const dishData: any = [
-  {
-    id: 1,
-    name: '名称1',
-    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト1',
-    tags: [
-      { id: 1, name: '材料1 100ml' },
-      { id: 2, name: '材料2 5cc' },
-      { id: 3, name: '材料3 10個' },
-    ],
-  },
-  {
-    id: 2,
-    name: '名称2',
-    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト2',
-    tags: [
-      { id: 1, name: '材料1 100ml' },
-      { id: 2, name: '材料2 5cc' },
-      { id: 3, name: '材料3 10個' },
-    ],
-  },
-  {
-    id: 3,
-    name: '名称3',
-    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト3',
-    tags: [
-      { id: 1, name: '材料1 100ml' },
-      { id: 2, name: '材料2 5cc' },
-      { id: 3, name: '材料3 10個' },
-    ],
-  },
-  {
-    id: 4,
-    name: '名称4',
-    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
-    tags: [
-      { id: 1, name: '材料1 100ml' },
-      { id: 2, name: '材料2 5cc' },
-      { id: 3, name: '材料3 10個' },
-    ],
-  },
-  {
-    id: 5,
-    name: '名称5',
-    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
-    tags: [
-      { id: 1, name: '材料1 100ml' },
-      { id: 2, name: '材料2 5cc' },
-      { id: 3, name: '材料3 10個' },
-    ],
-  },
-  {
-    id: 6,
-    name: '名称6',
-    text: 'テキストテキストテキストテキストテキストテキストテキストテキストテキスト4',
-    tags: [
-      { id: 1, name: '材料1 100ml' },
-      { id: 2, name: '材料2 5cc' },
-      { id: 3, name: '材料3 10個' },
-    ],
-  },
-];
-
-const getFishById = async (id: number) => {
-  try {
-    const res = await axiosInstance.get(FISHES + "/" + id);
-    return res.data;
-  } catch (error) {
-    console.error('Error fetching fishes:', error);
-    throw error;
-  }
-}
-
 const FishDetailBox = (data: any) => {
   const fishId = data.fishId
 
-  const [fish, setFish] = useState([]);
+  const [fish, setFish] = useState<Fish | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -116,7 +45,16 @@ const FishDetailBox = (data: any) => {
     fetchFish();
   }, [fishId]);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!fish) {
+    return <div>No fish found</div>;
+  }
+
   console.log(fish)
+  console.log(fish.FishCategory)
 
   return (
     <Box p={4}>
@@ -133,10 +71,10 @@ const FishDetailBox = (data: any) => {
 
       <Box>
         <Box mt={5}>
-          <Text mb={2} color="rgb(108, 117, 125)">名称: </Text>
-          <Text mb={2} color="rgb(108, 117, 125)">魚種</Text>
-          <Text mb={2} color="rgb(108, 117, 125)">サイズ</Text>
-          <Text mb={2} color="rgb(108, 117, 125)">重量</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">名称: {fish.name} </Text>
+          <Text mb={2} color="rgb(108, 117, 125)">魚種: {fish.FishCategory.name}</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">サイズ: {fish.length} cm</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">重量: {fish.weight} kg</Text>
           <Text color="rgb(108, 117, 125)">主な生息地</Text>
         </Box>
         <Box>
@@ -180,16 +118,16 @@ const FishDetailBox = (data: any) => {
                 lineHeight: '1.6',
               }}
             >
-              魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト
-              魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト
-              魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト魚詳細テキスト
+              {fish.description}
             </Text>
           </Box>
         </Box>
-        <FishingMethodBox />
+        <FishingMethodBox 
+          data={fish.FishingMethods}
+        />
 
         <DishBox
-          data={dishData}
+          data={fish.Dishes}
         />
       </Box>
     </Box>

@@ -83,7 +83,7 @@ const DishBox = ({ data }) => {
                   lineHeight: '1.6',
                 }}
               >
-                {dish.text}
+                {dish.description}
               </Text>
             </Box>
           </Box>
@@ -121,7 +121,7 @@ const DishBox = ({ data }) => {
                 >
                   {selectedDish.name}
                 </Text>
-                {selectedDish.tags.map((tag, index) => (
+                {selectedDish.ingredients.map((tag, index) => (
                   <Text 
                     key={index}
                     mb={1} 
