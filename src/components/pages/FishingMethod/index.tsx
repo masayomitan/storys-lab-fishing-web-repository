@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Grid,
   GridItem, 
@@ -12,13 +12,22 @@ import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { FishingMethod } from '../../../types/fishingMethod';
 
 interface FishingMethodBoxProps {
-  data: FishingMethod[];
+  data?: FishingMethod[];
 }
 
 const FishingMethodBox: React.FC<FishingMethodBoxProps> = ({ data }) => {
-
   const { isOpen, onToggle } = useDisclosure();
-  const [showText, setShowText] = useState(data.map(() => false));
+  const [showText, setShowText] = useState<boolean[]>([]);
+  
+  // データの変化を監視し、初期化する
+  useEffect(() => {
+    if (data) {
+      setShowText(data.map(() => false));
+    }
+  }, [data]);
+
+  // data が undefined の場合は何も表示しない
+  if (!data) return null;
 
   const representativeMethod = data.find(method => method.is_traditional);
   const otherMethods = data.filter(method => !method.is_traditional);
@@ -73,7 +82,10 @@ const FishingMethodBox: React.FC<FishingMethodBoxProps> = ({ data }) => {
         </Box>
         <Box>
           {otherMethods.map((method, index) => (
-            <Box key={method.ID} m={2}>
+            <Box 
+              key={index} 
+              m={2}
+            >
               <Button 
                 textAlign="center"
                 w="100%"

@@ -49,7 +49,9 @@ const FishBox = () => {
       {isLoading ? (
         <Text textAlign="center">読み込み中...</Text>
       ) : (
-        <FishItemBox fishes={fishes} />
+        <FishItemBox 
+          fishes={fishes}
+        />
       )}
 
       <Box

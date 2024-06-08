@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
-import axiosInstance from '../../../libs/api_clients/base';
 import Image from 'next/image';
 import FishingMethodBox from '../FishingMethod'
 import DishBox from '../Dish'
-import { FISH, FISHES } from '../../../constants/url';
 import { getFishById } from '../../../models/fish/action';
 import { Fish } from '../../../types/fish';
-
 
 import { 
   Flex,
   Box, 
-  Grid, 
-  GridItem, 
-  Input, 
-  Heading, 
   Text 
 } from '@chakra-ui/react';
 
-
-const FishDetailBox = (data: any) => {
-  const fishId = data.fishId
-
+const FishDetailBox = ({ fishId }) => {
   const [fish, setFish] = useState<Fish | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (fishId === null) return
-    console.log(fishId)
+
     const fetchFish = async () => {
-      setIsLoading(true);
+      setIsLoading(true)
       try {
-        const data = await getFishById(fishId);
+        const data = await getFishById(fishId)
+        if (data && data.FishImages && data.FishImages.length > 0) {
+          const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
+          data.image_url = `${apiUrl}${data.FishImages[0].image_url}`
+        }
         setFish(data);
       } catch (error) {
         setError(error);
@@ -46,24 +40,21 @@ const FishDetailBox = (data: any) => {
   }, [fishId]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (!fish) {
-    return <div>No fish found</div>;
+    return <div>No fish found</div>
   }
-
-  console.log(fish)
-  console.log(fish.FishCategory)
 
   return (
     <Box p={4}>
       <Box boxShadow="sm" p={4} position="relative">
-        <Box w="100%" h="15rem" textAlign="center">
+        <Box w="100%" h="15rem" textAlign="center" position="relative">
           <Image
-            src="/"
+            src={fish.image_url}
             layout="fill"
-            objectFit="cover"
+            style={{ objectFit: 'cover' }}
             alt="魚画像"
           />
         </Box>

@@ -1,7 +1,7 @@
-interface FishingMethod {
-  ID: string;
+export interface FishingMethod {
+  id: string;
   name: string;
   description: string;
-  DifficultyLevel: string;
-  IsTraditional: boolean;
+  difficulty_level: string;
+  is_traditional: boolean;
 }
