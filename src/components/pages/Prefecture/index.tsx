@@ -9,10 +9,10 @@ import {
   Text,
 } from '@chakra-ui/react';
 
-import AreaItem from '../Area/item/index'
+import PrefectureItem from '../Prefecture/item/index'
 
 
-const AreaHomeBox = () => {
+const PrefectureBox = () => {
   return (
     <Box mt={10} mb={10}>
       <Grid>
@@ -24,7 +24,7 @@ const AreaHomeBox = () => {
           >
             都道府県から釣り場を検索
           </Heading>
-          <AreaItem />
+          <PrefectureItem />
         </GridItem>
       </Grid>
 
@@ -36,7 +36,7 @@ const AreaHomeBox = () => {
         background="lightblue"
         borderColor="deepskyblue"
       >
-        <Link href="/areas">
+        <Link href="/prefectures">
           <Text
             fontSize={20}
             fontWeight="bold"
@@ -51,4 +51,4 @@ const AreaHomeBox = () => {
   );
 };
 
-export default AreaHomeBox;
+export default PrefectureBox;

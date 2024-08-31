@@ -3,14 +3,15 @@
 import React from 'react';
 
 import Layout from '../../components/parts/Layout/layout';
-import Area from '../../components/pages/Area';
+import Prefecture from '../../components/pages/Prefecture';
 
-const AreaPage = () => {
+
+const PrefecturePage = () => {
   return (
     <Layout>
-      <Area />
+      <Prefecture />
     </Layout>
   );
 }
 
-export default AreaPage;
+export default PrefecturePage;

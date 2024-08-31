@@ -50,7 +50,6 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
                     src={imageUrl}
                     width={200}
                     height={100}
-                    // style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '100%' }}
                     style={{ objectFit: 'contain'}}
                     alt="Story's"
                   />
