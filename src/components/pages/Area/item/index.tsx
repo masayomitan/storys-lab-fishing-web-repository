@@ -4,7 +4,6 @@ import {
   Box,
   Grid,
   Image,
-  VStack,
   Text
 } from '@chakra-ui/react';
 
@@ -16,39 +15,45 @@ const AreaItem: React.FC<AreaBoxProps> = ({data}) => {
   const router = useRouter();
 
   const handleClick = (pref) => () => {
-    router.push(`/areas/${pref.id}`);
+    router.push(`/fishing-spots/${pref.id}`);
   };
-
+  console.log(data)
   if (!data) return null;
 
   return (
     <Box>
-      <Grid templateColumns="repeat(2, 1fr)">
+      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         {data.map((pref, index) => (
-          <VStack
-            key={index}
-            shadow="md"
-            m={2}
-            borderRadius="md"
-            onClick={handleClick(pref)}
-            borderColor="gray.500"
-            borderWidth="1px"
+          <Box
+          key={index}
+          onClick={handleClick(pref)}
+        >
+          <Box
+            boxShadow="lg"
+            h="8rem"
+            mt={4}
+            mb={4}
+            position="relative"
           >
-            <Box
-              border="1px solid"
-              w="100%"
-              h="120px"
-              borderColor="gray.500"
-            >
-              <Image
-                borderRadius="full"
-                src="/"
-                alt={pref.label}
-              />
-            </Box>
+            <Image
+              src=""
+              style={{ 
+                objectFit: 'cover',
+                width: '100%',
+                height: 'auto',
+              }}
+              alt={`エリア画像`}
+            />
+          </Box>
+          <Box>
             <Text fontWeight="bold">{pref.name}</Text>
-            <Text fontWeight="bold">{pref.description}</Text>
-          </VStack>
+          </Box>
+          <Box>
+            <Text fontSize="12px">
+              {pref.description}
+            </Text>
+          </Box>
+        </Box>
         ))}
       </Grid>
     </Box>

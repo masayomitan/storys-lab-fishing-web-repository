@@ -53,7 +53,7 @@ const PrefectureDetailBox = ({ prefectureId }) => {
             size="lg"
             p={3}
           >
-            {prefecture.name}から釣り場を検索
+            {prefecture.name}からエリアを検索
           </Heading>
           <AreaItem
             data={prefecture.Areas}

@@ -40,31 +40,62 @@ const PrefectureItem: React.FC = () => {
   return (
     <Box>
       {displayPrefectures &&
-        <Grid templateColumns="repeat(2, 1fr)">
+        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           {displayPrefectures.map((prefecture) => (
-            <VStack
+            <Box
               key={prefecture.value}
-              shadow="md"
-              m={2}
-              borderRadius="md"
-              onClick={handleClick(prefecture)}
-              borderColor="gray.500"
-              _hover={{ bg: hoverBgColor }}
+              onClick={() => router.push(`/fishing-spots/detail/${prefecture.value}`)}
             >
               <Box
-                border="1px solid"
-                w="100%"
-                h="120px"
-                borderColor="gray.500"
+                boxShadow="lg"
+                h="8rem"
+                mt={4}
+                mb={4}
+                position="relative"
               >
                 <Image
-                  borderRadius="full"
-                  src="/"
-                  alt={prefecture.label}
+                  src=""
+                  style={{ 
+                    objectFit: 'cover',
+                    width: '100%',
+                    height: 'auto',
+                  }}
+                  alt={`釣り場画像`}
                 />
               </Box>
-              <Text fontWeight="bold">{prefecture.label}</Text>
-            </VStack>
+              <Box>
+                <Text fontWeight="bold">{prefecture.label}</Text>
+                <Text fontWeight="bold">{prefecture.label}</Text>
+              </Box>
+              <Box bg="#f5f5f5">
+                <Text fontSize="12px">
+                  {prefecture.label}
+                </Text>
+              </Box>
+            </Box>
+            // <VStack
+            //   key={prefecture.value}
+            //   shadow="md"
+            //   m={2}
+            //   borderRadius="md"
+            //   onClick={handleClick(prefecture)}
+            //   borderColor="gray.500"
+            //   _hover={{ bg: hoverBgColor }}
+            // >
+            //   <Box
+            //     border="1px solid"
+            //     w="100%"
+            //     h="120px"
+            //     borderColor="gray.500"
+            //   >
+            //     <Image
+            //       borderRadius="full"
+            //       src="/"
+            //       alt={prefecture.label}
+            //     />
+            //   </Box>
+            //   <Text fontWeight="bold">{prefecture.label}</Text>
+            // </VStack>
           ))}
         </Grid>
       }

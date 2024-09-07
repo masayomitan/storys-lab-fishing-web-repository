@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 
-import Layout from '../../../../components/parts/Layout/layout';
-import FishingSpotDetail from '../../../../components/pages/FishingSpot/detail';
+import Layout from '../../../components/parts/Layout/layout';
+import FishingSpotDetail from '../../../components/pages/FishingSpot/detail';
 // import { getDataById } from '../../utils/api'
 
 // 実データできたら削除
