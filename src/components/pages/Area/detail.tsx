@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 
 import { getAreaById } from '../../../models/area/action';
-import FishingSpotItemBox from './item/index'
+import FishingSpotItemBox from '../FishingSpot/item/index'
 
 const AreaDetailBox = ({ areaId }: any) => {
 
@@ -52,7 +52,7 @@ const AreaDetailBox = ({ areaId }: any) => {
             textAlign="center"
             size="md"
           >
-            エリア情報の釣り場情報一覧
+            {area.name} の釣り場情報一覧
           </Heading>
           <FishingSpotItemBox 
             data={area.FishingSpots}

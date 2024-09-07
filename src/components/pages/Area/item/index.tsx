@@ -15,7 +15,7 @@ const AreaItem: React.FC<AreaBoxProps> = ({data}) => {
   const router = useRouter();
 
   const handleClick = (pref) => () => {
-    router.push(`/fishing-spots/${pref.id}`);
+    router.push(`/areas/${pref.id}`);
   };
   console.log(data)
   if (!data) return null;
