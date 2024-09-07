@@ -42,37 +42,6 @@ const PrefectureItem: React.FC = () => {
       {displayPrefectures &&
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           {displayPrefectures.map((prefecture) => (
-            // <Box
-            //   key={prefecture.value}
-            //   onClick={() => router.push(`/fishing-spots/detail/${prefecture.value}`)}
-            // >
-            //   <Box
-            //     boxShadow="lg"
-            //     h="8rem"
-            //     mt={4}
-            //     mb={4}
-            //     position="relative"
-            //   >
-            //     <Image
-            //       src=""
-            //       style={{ 
-            //         objectFit: 'cover',
-            //         width: '100%',
-            //         height: 'auto',
-            //       }}
-            //       alt={`釣り場画像`}
-            //     />
-            //   </Box>
-            //   <Box>
-            //     <Text fontWeight="bold">{prefecture.label}</Text>
-            //     <Text fontWeight="bold">{prefecture.label}</Text>
-            //   </Box>
-            //   <Box bg="#f5f5f5">
-            //     <Text fontSize="12px">
-            //       {prefecture.label}
-            //     </Text>
-            //   </Box>
-            // </Box>
             <VStack
               key={prefecture.value}
               shadow="md"
