@@ -138,7 +138,7 @@ const FishingSpotDetailBox = ({
             近くの釣り場情報一覧
           </Heading>
           <FishingSpotItemBox 
-            fishingSpots={data}
+            data={data}
           />
             </GridItem>
       </Grid>

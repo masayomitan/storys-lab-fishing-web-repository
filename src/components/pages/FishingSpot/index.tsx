@@ -44,7 +44,7 @@ const FishingSpotBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpots }
             エリア情報の釣り場情報一覧
           </Heading>
           <FishingSpotItemBox 
-            fishingSpots={fishingSpots}
+            data={fishingSpots}
           />
         </GridItem>
       </Grid>
