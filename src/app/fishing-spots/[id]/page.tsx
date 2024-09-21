@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation';
 
 import Layout from '../../../components/parts/Layout/layout';
 import FishingSpotDetail from '../../../components/pages/FishingSpot/detail';
-// import { getDataById } from '../../utils/api'
 
 // 実データできたら削除
 const fishingSpots: any = [
@@ -86,42 +85,22 @@ const fishesData: any = [
   },
 ];
 
-
-
-const fetchFishingSpotData = async (
-  id: any
-) => {
-  return fishingSpots;
-    // props: await getDataById(id),
-
-};
-
 const FishingSpotPage = () => {
-  const useParam = useParams()
-  const pathId = (useParam) ? useParam.id : null
-  const [data, setData]: any = useState([])
-  const [fishes, setFishes]: any = useState([])
+  const [fishingSpotId, setFishingSpotId] = useState<string | null>(null);
+  const params = useParams()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result: any = await fetchFishingSpotData(pathId);
-      setData(result);
-      setFishes(fishesData);
-    };
-    fetchData();
-  }, [pathId, fishes]);
+    if (params && params.id) {
+      const fishId = params.id
+      setFishingSpotId(fishId as string);
+    } 
+  }, [params]);
 
-  // TODO 
-  if (!data) {
-    return false;
-  }
 
   return (
     <Layout>
       <FishingSpotDetail
-        data={data}
-        fishes={fishes}
-        pathId={pathId}
+        fishingSpotId={fishingSpotId}
       />
     </Layout>
   );
