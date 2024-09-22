@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getFishingSpotById, getFishingSpotByAreaId } from '../../../models/fishingSpot/action';
 
 import {
   Box,
@@ -16,17 +17,40 @@ import SeasonFishesTab from '../../parts/Tab/seasonTab';
 import TideTable from '../../parts/Table/tideTable';
 import FishingSpotItemBox from '../../pages/FishingSpot/item/index';
 
-const FishingSpotDetailBox = ({
-  data,
-  fishes,
-  pathId
-}: any) => {
+const FishingSpotDetailBox = ({ fishingSpotId }) => {
+  const [fishingSpot, setFishingSpot] = useState<any | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!data) {
-    return false;
-  }
-  // 消す
-  if (!data[4]) {
+  useEffect(() => {
+    if (fishingSpotId === null) return
+
+    const fetchFishingSpot = async () => {
+      setIsLoading(true)
+      try {
+        const data = await getFishingSpotById(fishingSpotId)
+        if (data) {
+          const areaId: number = data.area_id
+  
+          const nearbyFishingSpots = await getFishingSpotByAreaId(areaId)
+          console.log(fishingSpotId)
+          console.log(nearbyFishingSpots[0].id)
+          const filteredNearbySpots = nearbyFishingSpots.filter((spot: any) => {
+            return Number(spot.id) !== Number(fishingSpotId)
+          })
+          data.NearbyFishingSpot = filteredNearbySpots
+        }
+        setFishingSpot(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchFishingSpot();
+  }, [fishingSpotId]);
+
+  if (!fishingSpot) {
     return false;
   }
 
@@ -37,7 +61,7 @@ const FishingSpotDetailBox = ({
         size="lg"
         m={2}
       >
-        エリア{pathId}の釣り場情報詳細
+        エリア{fishingSpotId}の釣り場情報詳細
       </Heading>
       <Box 
         boxShadow="md"
@@ -67,7 +91,7 @@ const FishingSpotDetailBox = ({
           </Box>
           
           <SeasonFishesTab
-            fishes={fishes}
+            fishes={fishingSpot.Fishes}
           />
 
           <Box>
@@ -79,8 +103,8 @@ const FishingSpotDetailBox = ({
             </Text>
           </Box>
           <Box>
-            <Flex wrap="wrap">
-              {data[4].tags.map((tag, index) => (
+            {/* <Flex wrap="wrap">
+              {fishingSpot.tags.map((tag, index) => (
                 <Text 
                   key={index}
                   fontSize="16px"
@@ -93,11 +117,15 @@ const FishingSpotDetailBox = ({
                     {tag.name}
                   </Text>
               ))}
-            </Flex>
+            </Flex> */}
           </Box>
           
            {/* 潮時表 */}
-          <TideTable />
+          {fishingSpot.Area.Tides &&
+            <TideTable 
+              data={fishingSpot.Area.Tides}
+            />
+          }
 
           <Box
             m="20px 0"
@@ -137,10 +165,13 @@ const FishingSpotDetailBox = ({
           >
             近くの釣り場情報一覧
           </Heading>
-          <FishingSpotItemBox 
-            data={data}
-          />
-            </GridItem>
+
+          {fishingSpot.NearbyFishingSpot &&
+            <FishingSpotItemBox 
+              data={fishingSpot.NearbyFishingSpot}
+            />
+          }
+        </GridItem>
       </Grid>
     </Box>   
   );

@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import {
   Box,
   Grid,
+  Flex,
   Image,
   Text
 } from '@chakra-ui/react';
@@ -48,6 +49,25 @@ const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
           <Box>
             <Text fontWeight="bold">{pref.name}</Text>
           </Box>
+          {data.tags && 
+            <Box>
+              <Flex wrap="wrap">
+                {data.tags.map((tag, index) => (
+                  <Text 
+                    key={index}
+                    fontSize="10px"
+                    bg="white"
+                    border="2px solid #ADD8E6"
+                    borderRadius="5px"
+                    m={1}
+                    p={1}
+                  >
+                    {tag.name}
+                  </Text>
+                ))}
+              </Flex>
+            </Box>
+          }
           <Box>
             <Text fontSize="12px">
               {pref.description}
