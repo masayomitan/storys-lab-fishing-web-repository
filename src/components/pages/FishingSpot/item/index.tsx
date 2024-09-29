@@ -49,10 +49,10 @@ const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
           <Box>
             <Text fontWeight="bold">{pref.name}</Text>
           </Box>
-          {data.tags && 
+          {pref.Tags && 
             <Box>
               <Flex wrap="wrap">
-                {data.tags.map((tag, index) => (
+                {pref.Tags.map((tag, index) => (
                   <Text 
                     key={index}
                     fontSize="10px"

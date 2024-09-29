@@ -23,7 +23,6 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (fishingSpotId === null) return
 
     const fetchFishingSpot = async () => {
       setIsLoading(true)
@@ -33,8 +32,6 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
           const areaId: number = data.area_id
   
           const nearbyFishingSpots = await getFishingSpotByAreaId(areaId)
-          console.log(fishingSpotId)
-          console.log(nearbyFishingSpots[0].id)
           const filteredNearbySpots = nearbyFishingSpots.filter((spot: any) => {
             return Number(spot.id) !== Number(fishingSpotId)
           })
@@ -53,6 +50,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
   if (!fishingSpot) {
     return false;
   }
+  console.log(fishingSpot)
 
   return (
     <Box>
@@ -95,16 +93,8 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
           />
 
           <Box>
-            <Text 
-              fontSize="24px" 
-              textAlign="center"
-            >
-              詳細情報
-            </Text>
-          </Box>
-          <Box>
-            {/* <Flex wrap="wrap">
-              {fishingSpot.tags.map((tag, index) => (
+            <Flex wrap="wrap">
+              {fishingSpot.Tags.map((tag, index) => (
                 <Text 
                   key={index}
                   fontSize="16px"
@@ -117,7 +107,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
                     {tag.name}
                   </Text>
               ))}
-            </Flex> */}
+            </Flex>
           </Box>
           
            {/* 潮時表 */}

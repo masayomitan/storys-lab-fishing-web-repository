@@ -40,7 +40,7 @@ const seasons: Season[] = [
   { name: '冬', bgColor: '#E0FFFF', borderColor: "cyan.400" }
 ];
 
-const SeasonFishesTab: React.FC<FishesProps> = ({fishes}) => {
+const SeasonFishesTab: React.FC<FishesProps> = ({ fishes }) => {
   const router = useRouter();
 
   const getDefaultTabIndex = () => {
@@ -58,7 +58,8 @@ const SeasonFishesTab: React.FC<FishesProps> = ({fishes}) => {
   const handleClick = (fish) => {
     router.push(`/fishes/${fish.id}`);
   };
-  
+  if (!fishes) return null
+
   return (
     <Grid>
       <GridItem colSpan={12}>
