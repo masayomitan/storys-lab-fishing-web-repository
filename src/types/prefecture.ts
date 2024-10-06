@@ -1,8 +1,8 @@
-// import { Area } from '../types/area'
-
-export type Pref = {
-  id: string;
-  name: string;
-  name_kana: string;
-  Areas: [];
+export interface Pref {
+  id: number
+  name: string
+  name_kana?: string
+  image_url?: string
+  Areas?: []
+  region?: string
 }

@@ -1,19 +1,9 @@
-export type FishingSpot = {
-  id: number;
-  name: string;
-  text: string;
+export interface FishingSpot {
+  id: number
+  name: string
+  text: string
   tags: Array<{
-    id: number;
-    name: string;
-  }>;
-};
-
-type FishingSpotBoxProps = {
-  id: number;
-  name: string;
-  text: string;
-  tags: Array<{
-    id: number;
-    name: string;
-  }>;
-};
+    id: number
+    name: string
+  }>
+}

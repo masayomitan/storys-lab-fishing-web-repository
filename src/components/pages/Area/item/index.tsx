@@ -8,49 +8,50 @@ import {
 } from '@chakra-ui/react';
 
 interface AreaBoxProps {
-  data?: any;
+  areas?: any;
 }
 
-const AreaItem: React.FC<AreaBoxProps> = ({data}) => {
+const AreaItem: React.FC<AreaBoxProps> = ({areas}) => {
   const router = useRouter();
 
   const handleClick = (pref) => () => {
-    router.push(`/areas/${pref.id}`);
-  };
-  console.log(data)
-  if (!data) return null;
+    router.push(`/areas/${pref.id}`)
+  }
+
+  if (!areas) return null
 
   return (
     <Box>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-        {data.map((pref, index) => (
+        {areas.map((area, index) => (
           <Box
           key={index}
-          onClick={handleClick(pref)}
+          onClick={handleClick(area)}
         >
           <Box
             boxShadow="lg"
-            h="8rem"
+            w="200px"
+            h="170px"
             mt={4}
             mb={4}
             position="relative"
           >
             <Image
-              src=""
+              src={area.image_url}
+              alt={area.name}
               style={{ 
-                objectFit: 'cover',
+                objectFit: 'contain',
                 width: '100%',
-                height: 'auto',
+                height: '100%'
               }}
-              alt={`エリア画像`}
             />
           </Box>
           <Box>
-            <Text fontWeight="bold">{pref.name}</Text>
+            <Text fontWeight="bold">{area.name}</Text>
           </Box>
           <Box>
             <Text fontSize="12px">
-              {pref.description}
+              {area.description}
             </Text>
           </Box>
         </Box>

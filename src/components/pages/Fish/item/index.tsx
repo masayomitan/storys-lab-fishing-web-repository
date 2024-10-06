@@ -9,8 +9,7 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
 
   const handleClick = (id) => {
     router.push(`/fishes/${id}`);
-  };
-  console.log(fishes)
+  }
 
   return (
     <Box>
@@ -19,10 +18,6 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
         gap={4}
       >
         {fishes.map((fish, index) => {
-          const imageUrl 
-            = fish.FishImages.length > 0 
-            ? `${apiUrl}${fish.FishImages[0].image_url}` 
-            : `${process.env.NEXT_PUBLIC_API_ENDPOINT}/public/images/no_image.png`;
 
           return (
             <Box
@@ -47,10 +42,12 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
                   alignItems="center"
                 >
                   <Image
-                    src={imageUrl}
+                    src={fish.image_url}
                     width={200}
                     height={100}
-                    style={{ objectFit: 'contain'}}
+                    style={{ 
+                      objectFit: 'contain'
+                    }}
                     alt="Story's"
                   />
                 </Box>

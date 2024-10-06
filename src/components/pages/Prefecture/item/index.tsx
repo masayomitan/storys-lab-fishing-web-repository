@@ -10,40 +10,35 @@ import {
 } from '@chakra-ui/react';
 
 import { prefectures } from '../../../../constants/prefectures';
-
-type Prefecture = {
-  value: number;
-  label: string;
-  region?: string;
-};
+import { Pref } from '../../../../types/prefecture';
 
 const PrefectureItem: React.FC = () => {
-  const router = useRouter();
-  const pathname = usePathname();
+  const router = useRouter()
+  const pathname = usePathname()
 
-  const hoverBgColor = useColorModeValue('gray.200', 'gray.600');
-  const [displayPrefectures, setDisplayPrefectures] = useState<Prefecture[]>([]);
+  const hoverBgColor = useColorModeValue('gray.200', 'gray.600')
+  const [displayPrefectures, setDisplayPrefectures] = useState<Pref[]>([])
 
   useEffect(() => {
     if (pathname === '/prefectures/') {
-      setDisplayPrefectures(prefectures);
+      setDisplayPrefectures(prefectures)
     } else {
-      const shuffled = [...prefectures].sort(() => 0.5 - Math.random());
-      setDisplayPrefectures(shuffled.slice(0, 6));
+      const shuffled = [...prefectures].sort(() => 0.5 - Math.random())
+      setDisplayPrefectures(shuffled.slice(0, 6))
     }
-  }, [pathname]);
+  }, [pathname])
 
   const handleClick = (prefecture) => () => {
-    router.push(`/prefectures/${prefecture.value}`);
-  };
-
+    router.push(`/prefectures/${prefecture.id}`)
+  }
+  
   return (
     <Box>
       {displayPrefectures &&
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-          {displayPrefectures.map((prefecture) => (
+          {displayPrefectures.map((prefecture, index) => (
             <VStack
-              key={prefecture.value}
+              key={index}
               shadow="md"
               m={2}
               borderRadius="md"
@@ -58,12 +53,16 @@ const PrefectureItem: React.FC = () => {
                 borderColor="gray.500"
               >
                 <Image
-                  borderRadius="full"
-                  src="/"
-                  alt={prefecture.label}
+                  src={prefecture.image_url}
+                  alt={prefecture.name}
+                  style={{ 
+                    objectFit: 'contain',
+                    width: '100%',
+                    height: '100%'
+                  }}
                 />
               </Box>
-              <Text fontWeight="bold">{prefecture.label}</Text>
+              <Text fontWeight="bold">{prefecture.name}</Text>
             </VStack>
           ))}
         </Grid>

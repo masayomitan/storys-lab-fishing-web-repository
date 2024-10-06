@@ -44,7 +44,7 @@ const ToolCategoryBox: React.FC<ToolCategoryProps> = ({ toolCategories }) => {
   const router = useRouter();
 
   const handleClick = (id) => {
-    router.push(`/tool-categories/detail/${id}`);
+    router.push(`/tool-categories/${id}`);
   };
 
   return (

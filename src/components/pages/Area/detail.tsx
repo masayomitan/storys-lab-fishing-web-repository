@@ -21,7 +21,6 @@ const AreaDetailBox = ({ areaId }: any) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  console.log(areaId)
   useEffect(() => {
     if (areaId === null) return
 
@@ -29,7 +28,6 @@ const AreaDetailBox = ({ areaId }: any) => {
       setIsLoading(true)
       try {
         const data = await getAreaById(areaId)
-        console.log(data)
         setArea(data)
       } catch (error) {
         setError(error);

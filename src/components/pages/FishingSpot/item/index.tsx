@@ -13,13 +13,12 @@ interface AreaBoxProps {
 }
 
 const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleClick = (pref) => () => {
-    router.push(`/fishing-spots/${pref.id}`);
-  };
-  console.log(data)
-  if (!data) return null;
+    router.push(`/fishing-spots/${pref.id}`)
+  }
+  if (!data) return null
 
   return (
     <Box>

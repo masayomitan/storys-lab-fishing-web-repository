@@ -28,17 +28,24 @@ const FishBox = () => {
     const fetchFishes = async () => {
       setIsLoading(true);
       try {
-        const data = await getFishes();
-        setFishes(data);
+        const fishes = await getFishes()
+        for (const fish of fishes) {
+          if (fish.FishImages.length > 0) {
+            fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + fish.FishImages[0].image_url
+          } else {
+            fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
+          }
+        }
+        setFishes(fishes)
       } catch (error) {
-        setError(error);
+        setError(error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
+    }
 
-    fetchFishes();
-  }, []);
+    fetchFishes()
+  }, [])
 
   return (
     <Box mt={10} mb={10}>

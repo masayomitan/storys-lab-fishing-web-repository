@@ -6,7 +6,7 @@ import { Box, Flex, Text } from '@chakra-ui/react';
 const ToolItemBox = ({ data }) => {
   const router = useRouter();
   const handleClick = (tool) => {
-    router.push(`/tools/detail/${tool.tool_id}`);
+    router.push(`/tools/${tool.tool_id}`);
   };
 
   return (
