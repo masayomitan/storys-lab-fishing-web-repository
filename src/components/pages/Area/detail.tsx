@@ -27,8 +27,16 @@ const AreaDetailBox = ({ areaId }: any) => {
     const fetchArea = async () => {
       setIsLoading(true)
       try {
-        const data = await getAreaById(areaId)
-        setArea(data)
+        const fetchedArea = await getAreaById(areaId)
+        console.log(fetchedArea)
+        for (const FishingSpot of fetchedArea.FishingSpots) {
+          if (FishingSpot && FishingSpot.image_url !== '') {
+            FishingSpot.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + FishingSpot.image_url    
+          } else {
+            FishingSpot.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
+          }
+        }
+        setArea(fetchedArea)
       } catch (error) {
         setError(error);
       } finally {

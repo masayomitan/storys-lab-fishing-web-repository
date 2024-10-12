@@ -27,8 +27,8 @@ const TideTable: React.FC<TideTableProps> = ({ data }) => {
   }
 
   const getPrefectureName = (prefectureId: number) => {
-    const prefecture = prefectures.find(p => p.value === prefectureId)
-    return prefecture ? prefecture.label : 'idが不正です'
+    const prefecture = prefectures.find(p => p.id === prefectureId)
+    return prefecture ? prefecture.name : 'idが不正です'
   }
 
   return (

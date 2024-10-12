@@ -27,17 +27,21 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
     const fetchFishingSpot = async () => {
       setIsLoading(true)
       try {
-        const data = await getFishingSpotById(fishingSpotId)
-        if (data) {
-          const areaId: number = data.area_id
+        const fetchedFishingSpot = await getFishingSpotById(fishingSpotId)
+        if (fetchedFishingSpot) {
+          if (fetchedFishingSpot && fetchedFishingSpot.image_url !== '') {
+            fetchedFishingSpot.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + fetchedFishingSpot.image_url    
+          } else {
+            fetchedFishingSpot.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
+          }
   
-          const nearbyFishingSpots = await getFishingSpotByAreaId(areaId)
+          const nearbyFishingSpots = await getFishingSpotByAreaId(fetchedFishingSpot.area_id)
           const filteredNearbySpots = nearbyFishingSpots.filter((spot: any) => {
             return Number(spot.id) !== Number(fishingSpotId)
           })
-          data.NearbyFishingSpot = filteredNearbySpots
+          fetchedFishingSpot.NearbyFishingSpot = filteredNearbySpots
         }
-        setFishingSpot(data);
+        setFishingSpot(fetchedFishingSpot);
       } catch (error) {
         setError(error);
       } finally {
@@ -50,6 +54,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
   if (!fishingSpot) {
     return false;
   }
+  console.log(fishingSpot)
 
   return (
     <Box>
@@ -71,7 +76,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
           textAlign="center"
         >
           <Image
-            src="/"
+            src={fishingSpot.image_url}
             layout="fill"
             objectFit="cover"
             alt="釣り場詳細画像"
@@ -83,7 +88,10 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
         <GridItem colSpan={12} p={4}>          
           <Box>
             <Text fontSize="24px">
-              釣り場名称
+              {fishingSpot.name}
+            </Text>
+            <Text fontSize="20px" m={2}>
+              {fishingSpot.description}
             </Text>
           </Box>
           

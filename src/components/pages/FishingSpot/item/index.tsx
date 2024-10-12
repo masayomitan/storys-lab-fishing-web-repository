@@ -36,13 +36,13 @@ const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
             position="relative"
           >
             <Image
-              src=""
+              src={pref.image_url}
+              alt={pref.name}
               style={{ 
                 objectFit: 'cover',
                 width: '100%',
-                height: 'auto',
+                height: '100%',
               }}
-              alt={`釣り場画像`}
             />
           </Box>
           <Box>
