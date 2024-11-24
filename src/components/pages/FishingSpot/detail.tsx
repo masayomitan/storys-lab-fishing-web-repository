@@ -54,7 +54,6 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
   if (!fishingSpot) {
     return false;
   }
-  console.log(fishingSpot)
 
   return (
     <Box>

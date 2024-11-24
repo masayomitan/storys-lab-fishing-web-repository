@@ -66,7 +66,12 @@ const PrefectureDetailBox: React.FC<PrefectureDetailBoxProps> = ({ prefectureId 
         borderColor="deepskyblue"
       >
         <Link href="/prefectures">
-          <Text fontSize={20} fontWeight="bold" textAlign="center" color="#fff">
+          <Text 
+            fontSize={20}
+            fontWeight="bold"
+            textAlign="center"
+            color="#fff"
+          >
             さらに見る
           </Text>
         </Link>

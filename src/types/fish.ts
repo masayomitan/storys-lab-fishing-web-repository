@@ -1,10 +1,7 @@
 import { Dish } from '../types/dish'
-import { FishCategory } from '../types/fishCategory'
-import { FishingMethod } from '../types/fishingMethod'
-import { FishImage } from '../types/fishImage'
 
 export interface Fish {
-  id: string;
+  id: number;
   name: string;
   family_name: string;
   scientific_name: string;
@@ -23,3 +20,38 @@ export interface Fish {
 
   image_url: string;
 }
+
+export interface FishCategory {
+  id: number;
+  name: string;
+  description: string;
+}
+
+export interface FishImage {
+  id: string;
+  fish_id: string;
+  image_url: string;
+  sort: number;
+  is_main: boolean;
+}
+
+export interface FishingMethod {
+  id: string;
+  name: string;
+  description: string;
+  difficulty_level: string;
+  is_traditional: boolean;
+}
+
+export interface FishingSpot {
+  id: number
+  name: string
+  image_url: string;
+  text: string
+  tags: Array<{
+    id: number
+    name: string
+  }>
+}
+
+

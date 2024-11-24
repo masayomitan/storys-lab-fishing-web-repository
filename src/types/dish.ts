@@ -1,12 +1,10 @@
-import { DishImage } from '../types/dishImage'
-
 export interface Ingredient {
   name: string;
   amount: string;
 }
 
 export interface Dish {
-  id: string;
+  id: number;
   name: string;
   description: string;
   ingredients: Ingredient[];
@@ -16,4 +14,10 @@ export interface Dish {
   image_url: string;
 }
 
-export default Dish;
+export interface DishImage {
+  id: number;
+  dish_id: string;
+  image_url: string;
+  sort: number;
+  is_main: boolean;
+}  

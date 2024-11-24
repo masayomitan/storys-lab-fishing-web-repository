@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState } from 'react'
+import Image from 'next/image'
 
 import {
   Box,
   Flex,
   Heading,
   Text,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import ToolItemBox from '../../pages/Tool/item/index';
+import ToolItemBox from '../../pages/Tool/item/index'
 
-const ToolBox = ({ data }) => {
+const ToolBox = ({ toolCategories }) => {
 
   return (
     <Box mt={10} mb={10}>
@@ -51,7 +51,7 @@ const ToolBox = ({ data }) => {
       </Box>
           
       <ToolItemBox 
-        data={data}
+        toolCategories={toolCategories}
       />
 
     </Box>

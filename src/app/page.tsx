@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react';
-import Image from 'next/image';
-import ScrollTab from '../components/parts/Tab/scrollTab';
+import React from 'react'
+import Image from 'next/image'
+import ScrollTab from '../components/parts/Tab/scrollTab'
 
 import {
   Box,
@@ -10,15 +10,15 @@ import {
   Grid,
   GridItem,
   Text,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import Layout from '../components/parts/Layout/layout';
-import SearchBar from '../components/parts/SearchBar/index';
-import PrefectureBox from '../components/pages/Prefecture/index';
-import FishBox from '../components/pages/Fish/index';
-import ArticleHomeIndex from '../components/pages/Article/homeIndex';
-import ToolCategoryHomeIndex from '../components/pages/ToolCategory/homeIndex';
-import EventHomeIndex from '../components/pages/Event/homeIndex';
+import Layout from '../components/parts/Layout/layout'
+import SearchBar from '../components/parts/SearchBar/index'
+import PrefectureBox from '../components/pages/Prefecture/index'
+import FishBox from '../components/pages/Fish/index'
+import ArticleBox from '../components/pages/Article'
+import ToolBox from '../components/pages/Tool/item/homeIndex'
+import EventHomeIndex from '../components/pages/Event/homeIndex'
 import "./style.css";
 
 const  Home: React.FC = () => {
@@ -55,10 +55,10 @@ const  Home: React.FC = () => {
         <FishBox />
         
         {/* 記事一覧 */}
-        <ArticleHomeIndex />
+        <ArticleBox />
 
         {/* 道具種別一覧 */}
-        <ToolCategoryHomeIndex />
+        <ToolBox />
 
         {/* イベント一覧 */}
         <EventHomeIndex />

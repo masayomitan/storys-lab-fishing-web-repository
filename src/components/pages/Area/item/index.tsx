@@ -12,7 +12,7 @@ interface AreaBoxProps {
 }
 
 const AreaItem: React.FC<AreaBoxProps> = ({areas}) => {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleClick = (pref) => () => {
     router.push(`/areas/${pref.id}`)

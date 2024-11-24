@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link'
+import { getToolById } from '../../../models/tool/action';
 
 // import { useRouter } from 'next/navigation';
 
@@ -16,45 +17,39 @@ import {
   Button,
 } from '@chakra-ui/react';
 
-const FishBox: React.FC<any> = ({ index }) => {
-  const router = useRouter();
-  const handleClick = () => {
-    router.push(`/fishes/detail/${index + 1}`);
-  };
+const ToolDetailBox = ({ toolId }) => {
+  const [tool, setTool] = useState<any | null>()
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  return (
-    <Box>
-      <Box
-        boxShadow="lg"
-        w="100%" 
-        h="8rem"
-        textAlign="center"
-        onClick={handleClick}
-      >
-        <Image
-          src=""
-          style={{ 
-            objectFit: 'cover',
-            width: '100%',
-            height: 'auto',
-          }}
-          alt={`魚画像`}
-        />
-      </Box>
-      <Box>
-        <Text>
-          名称
-        </Text>
-        <Text>
-          テキストテキストテキストテキストテキストテキスト
-        </Text>
-      </Box>
-    </Box>
-  );
-};
+  useEffect(() => {
+    if (toolId === null) return
 
-const ToolDetailBox: React.FC<any> = () => {
-  // const router = useRouter();
+    const fetchFish = async () => {
+      setIsLoading(true)
+      try {
+        const data = await getToolById(toolId)
+        if (data && data.FishImages && data.FishImages.length > 0) {
+          const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
+          data.image_url = `${apiUrl}${data.FishImages[0].image_url}`
+        }
+        setTool(data)
+      } catch (error) {
+        setError(error)
+      } finally {
+        setIsLoading(false)
+      }
+    };
+
+    fetchFish()
+  }, [toolId])
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (!tool) {
+    return <div>No tool found</div>
+  }
 
   return (
     <Box>
@@ -78,7 +73,7 @@ const ToolDetailBox: React.FC<any> = () => {
           fontSize="24px"
           fontWeight="bold"
         >
-          道具名称
+          {tool.name}
         </Text>
         <Text
           fontSize="12px"
@@ -89,7 +84,7 @@ const ToolDetailBox: React.FC<any> = () => {
           fontSize="20px"
           fontWeight="bold"
         >
-          10000円
+          {tool.price}
         </Text>
 
         <Box>
@@ -101,17 +96,17 @@ const ToolDetailBox: React.FC<any> = () => {
           <Text
             fontSize="12px"
           >
-            メーカー
+            {tool.maker}
           </Text>
           <Text
             fontSize="12px"
           >
-            重量
+            {tool.weight}
           </Text>
           <Text
             fontSize="12px"
           >
-            全長
+            {tool.size}
           </Text>
         </Box>
         <Box
@@ -151,11 +146,7 @@ const ToolDetailBox: React.FC<any> = () => {
               lineHeight: '1.6',
             }}
           >
-            テキストテキストテキストテキストテキストテキスト
-            テキストテキストテキストテキストテキストテキスト
-            テキストテキストテキストテキストテキストテキスト
-            テキストテキストテキストテキストテキストテキスト
-            テキストテキストテキストテキストテキストテキスト
+            {tool.description}
           </Text>
         </Box>
 
@@ -164,34 +155,14 @@ const ToolDetailBox: React.FC<any> = () => {
             templateColumns="repeat(2, 1fr)" 
             gap={4}
           >
-            {Array.from({ length: 3 }, (_, index) => (
+            {/* {Array.from({ length: 3 }, (_, index) => (
               <FishBox
                 key={index}
                 index={index} 
               />
-            ))}
+            ))} */}
           </Grid>
 
-          <Box 
-            border="0.5px solid"
-            boxShadow="md"
-            m="2px 10px"
-            p={2}
-            borderRadius="5"
-            background="lightblue"
-            borderColor="deepskyblue"
-          >
-            <Link href="/fishes">
-              <Text
-                fontSize={20}
-                fontWeight="bold"
-                textAlign="center"
-                color="#fff"
-              >
-                さらに見る
-              </Text>
-            </Link>
-          </Box>
         </Box>
 
       </Box>

@@ -1,28 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import axiosInstance from '../../../libs/api_clients/base';
-import { FISH, FISHES } from '../../../constants/url';
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import axiosInstance from '../../../libs/api_clients/base'
+import { FISH, FISHES } from '../../../constants/url'
 import { 
   Box,
   Heading,
   Text
-} from '@chakra-ui/react';
-import FishItemBox from './item/index';
+} from '@chakra-ui/react'
+import FishItemBox from './item/index'
 
 const getFishes = async () => {
   try {
-    const res = await axiosInstance.get(FISHES);
-    return res.data;
+    const res = await axiosInstance.get(FISHES)
+    return res.data
   } catch (error) {
-    console.error('Error fetching fishes:', error);
-    throw error;
+    console.error('Error fetching fishes:', error)
+    throw error
   }
 }
 
 const FishBox = () => {
-  const [fishes, setFishes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [fishes, setFishes] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchFishes = async () => {

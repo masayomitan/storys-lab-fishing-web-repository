@@ -48,8 +48,8 @@ const FishDetailBox = ({ fishId }) => {
   }
 
   return (
-    <Box p={4}>
-      <Box boxShadow="sm" p={4} position="relative">
+    <Box>
+      <Box boxShadow="sm" pt={4} position="relative">
         <Box w="100%" h="15rem" textAlign="center" position="relative">
           <Image
             src={fish.image_url}
@@ -60,7 +60,7 @@ const FishDetailBox = ({ fishId }) => {
         </Box>
       </Box>
 
-      <Box>
+      <Box p={4}>
         <Box mt={5}>
           <Text mb={2} color="rgb(108, 117, 125)">名称: {fish.name} </Text>
           <Text mb={2} color="rgb(108, 117, 125)">魚種: {fish.FishCategory.name}</Text>
