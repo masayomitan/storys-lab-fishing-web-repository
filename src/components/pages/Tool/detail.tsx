@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
-import { getToolById } from '../../../models/tool/action';
+import { getToolById } from '../../../models/tool/action'
 
 // import { useRouter } from 'next/navigation';
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import Slider from 'react-slick'
 
 import {
   Box,
@@ -21,6 +24,13 @@ const ToolDetailBox = ({ toolId }) => {
   const [tool, setTool] = useState<any | null>()
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   useEffect(() => {
     if (toolId === null) return
@@ -28,12 +38,15 @@ const ToolDetailBox = ({ toolId }) => {
     const fetchFish = async () => {
       setIsLoading(true)
       try {
-        const data = await getToolById(toolId)
-        if (data && data.FishImages && data.FishImages.length > 0) {
-          const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
-          data.image_url = `${apiUrl}${data.FishImages[0].image_url}`
+        const tool = await getToolById(toolId)
+        if (tool.ToolImages && tool.ToolImages.length > 0) {
+          tool.ToolImages = tool.ToolImages.map(toolImage => 
+            process.env.NEXT_PUBLIC_API_ENDPOINT + toolImage.image_url
+          )
+        } else {
+          tool.image_urls = [process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`]
         }
-        setTool(data)
+        setTool(tool)
       } catch (error) {
         setError(error)
       } finally {
@@ -55,18 +68,31 @@ const ToolDetailBox = ({ toolId }) => {
     <Box>
       <Box gap={4} p={4}>
         <Box boxShadow="sm" p={4} position="relative">
-          <Box w="100%" h="250px" textAlign="center">
-            <Image
-              src=""
-              layout="fill"
-              style={{ 
-                objectFit: 'cover',
-                width: '100%',
-                height: 'auto',
-              }}
-              alt="道具詳細画像"
-            />
-          </Box>          
+          <Slider {...sliderSettings}>
+            {tool.ToolImages.map((toolImage, index) => (
+              <Flex key={index}>
+                <Box
+                  key={index}
+                  w="100%"
+                  h="250px"
+                  textAlign="center"
+                >
+                  <Image
+                    src={toolImage}
+                    width={16}
+                    height={9}
+                    layout="responsive"
+                    style={{ 
+                      objectFit: 'contain',
+                      width: '100%',
+                      height: '100%',
+                    }}
+                    alt="道具詳細画像"
+                  />
+                </Box>
+              </Flex>
+            ))}
+          </Slider>  
         </Box>
 
         <Text
@@ -193,7 +219,7 @@ const ToolDetailBox = ({ toolId }) => {
         </Button>
       </Flex>
     </Box>   
-  );
+  )
 }
 
-export default ToolDetailBox;
+export default ToolDetailBox

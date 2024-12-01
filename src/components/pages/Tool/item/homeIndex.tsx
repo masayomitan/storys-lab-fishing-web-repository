@@ -1,14 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getTools } from '../../../../models/tool/action';
 
 import {
   Box,
-  Container,
-  Grid,
-  GridItem,
-  Heading,
   Text,
   Flex
 } from '@chakra-ui/react'
@@ -29,14 +26,13 @@ const ToolHomeBox: React.FC<any> = () => {
       setIsLoading(true);
       try {
         const tools = await getTools()
-        console.log(tools)
-        // for (const fish of tools) {
-        //   if (fish.FishImages.length > 0) {
-        //     fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + fish.FishImages[0].image_url
-        //   } else {
-        //     fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
-        //   }
-        // }
+        for (const tool of tools) {
+          if (tool.ToolImages.length > 0) {
+            tool.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + tool.ToolImages[0].image_url
+          } else {
+            // tool.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
+          }
+        }
         setTools(tools)
       } catch (error) {
         setError(error)
@@ -44,7 +40,6 @@ const ToolHomeBox: React.FC<any> = () => {
         setIsLoading(false)
       }
     }
-
     fetchFishes()
   }, [])
 
@@ -71,7 +66,18 @@ const ToolHomeBox: React.FC<any> = () => {
               alignItems="center"
               justifyContent="center"
             >
-              <Text>道具画像 {tool.id}</Text>
+              <Image
+                src={tool.image_url}
+                width={16}
+                height={12}
+                layout="responsive"
+                style={{
+                  width: "100%",
+                  height: 'auto',
+                  objectFit: "contain",
+                }}
+                alt="道具画像"
+              />
             </Box>
             <Box p={3}>
               <Text fontWeight="semibold">{tool.name}</Text>

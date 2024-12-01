@@ -8,9 +8,10 @@ import {
   Avatar,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { truncateText } from '../../../../utils/util'
+import { truncateText, getArticleUser } from '../../../../utils/util'
 
 const ArticleItemBox: React.FC<any> = ({ articles }) => {
+
   const router = useRouter()
   for (const article of articles) {
     for (const ArticleImage of article.ArticleImages) {
@@ -21,7 +22,6 @@ const ArticleItemBox: React.FC<any> = ({ articles }) => {
       }
     }
   }
-  
 
   const handleClick = (id) => {
     router.push(`/articles/${id}`)
@@ -52,7 +52,7 @@ const ArticleItemBox: React.FC<any> = ({ articles }) => {
             </Box>
             <Flex alignItems="center" mt={2}>
               <Avatar name="" size="xs" src='/' mr={2} />
-              <Text fontSize="sm">{article.admin_id}</Text>
+              <Text fontSize="sm">{getArticleUser(article).name}</Text>
             </Flex>
             <Text fontWeight="bold">{article.title}</Text>
             <Text >{article.sub_title}</Text>

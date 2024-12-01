@@ -11,7 +11,7 @@ interface AreaBoxProps {
   areas?: any;
 }
 
-const AreaItem: React.FC<AreaBoxProps> = ({areas}) => {
+const AreaItem: React.FC<AreaBoxProps> = ({ areas }) => {
   const router = useRouter()
 
   const handleClick = (pref) => () => {
