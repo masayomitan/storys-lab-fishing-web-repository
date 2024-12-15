@@ -22,7 +22,7 @@ const ToolCategoryBox = () => {
       setIsLoading(true)
       try {
         const toolCategories = await getToolCategories()
-        console.log(toolCategories)
+
         for (const toolCategory of toolCategories) {
           if (toolCategory.Tools) {
             for (const tool of toolCategory.Tools) {
@@ -33,9 +33,7 @@ const ToolCategoryBox = () => {
               }
             }
           }
-          
         }
-        console.log(toolCategories)
         setToolCategories(toolCategories)
       } catch (error) {
         setError(error)

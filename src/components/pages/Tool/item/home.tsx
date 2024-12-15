@@ -7,7 +7,8 @@ import { getTools } from '../../../../models/tool/action';
 import {
   Box,
   Text,
-  Flex
+  Flex,
+  Heading
 } from '@chakra-ui/react'
 import { truncateText } from '../../../../utils/util'
 import MoreLink from '../../../parts/MoreLink'
@@ -21,6 +22,16 @@ const ToolHomeBox: React.FC<any> = () => {
   const handleClick = (id) => {
     router.push(`/tools/${id}`)
   }
+
+  const renderStars = (count) => {
+    const starIcons = '⭐️'.repeat(count);
+    return (
+      <Text color="gold" fontSize="lg">
+        {starIcons}
+      </Text>
+    )
+  }
+  
   useEffect(() => {
     const fetchFishes = async () => {
       setIsLoading(true);
@@ -47,6 +58,13 @@ const ToolHomeBox: React.FC<any> = () => {
 
   return (
     <Box>
+      <Heading 
+        textAlign="center" 
+        size="lg"
+        mt={5}
+      >
+        道具種別一覧
+      </Heading>
       <Flex overflowX="auto" p={2}>
         {tools.map((tool, index) => (
           <Box
@@ -82,8 +100,12 @@ const ToolHomeBox: React.FC<any> = () => {
             <Box p={3}>
               <Text fontWeight="semibold">{tool.name}</Text>
               <Text fontSize="sm" color="blue.500">{tool.maker}</Text>
-              <Text fontSize="sm" color="blue.400">{tool.recommend}</Text>
-              <Text fontSize="sm" color="blue.300">{tool.easy_fishing}</Text>
+              <Text fontSize="sm" color="blue.400">
+                おすすめ: {renderStars(tool.recommend)}
+              </Text>
+              <Text fontSize="sm" color="blue.300">
+                使いやすさ: {renderStars(tool.easy_fishing)}
+              </Text>
               <Text mt={2} fontSize="xs" color="gray.600">{truncateText(tool.description, 10)}</Text>
             </Box>
           </Box>

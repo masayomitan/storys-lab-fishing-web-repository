@@ -110,7 +110,7 @@ const ToolDetailBox = ({ toolId }) => {
           fontSize="20px"
           fontWeight="bold"
         >
-          {tool.price}
+          {tool.price}円
         </Text>
 
         <Box>
@@ -127,12 +127,12 @@ const ToolDetailBox = ({ toolId }) => {
           <Text
             fontSize="12px"
           >
-            {tool.weight}
+            {tool.weight}kg
           </Text>
           <Text
             fontSize="12px"
           >
-            {tool.size}
+            {tool.size}cm
           </Text>
         </Box>
         <Box

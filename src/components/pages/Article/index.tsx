@@ -13,9 +13,9 @@ import { getArticles } from '../../../models/article/action'
 import ArticleItemBox from './item/index'
 
 const ArticleBox = () => {
-  const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [articles, setArticles] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -47,7 +47,7 @@ const ArticleBox = () => {
             textAlign="center"
             size="lg"
           >
-          記事情報一覧
+            記事情報一覧
           </Heading>
           <ArticleItemBox articles={articles} />
         </GridItem>

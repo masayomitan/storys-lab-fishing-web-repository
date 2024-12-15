@@ -17,7 +17,7 @@ import SearchBar from '../components/parts/SearchBar/index'
 import PrefectureBox from '../components/pages/Prefecture/index'
 import FishBox from '../components/pages/Fish/index'
 import ArticleBox from '../components/pages/Article'
-import ToolBox from '../components/pages/Tool/item/homeIndex'
+import ToolBox from '../components/pages/Tool/item/home'
 import EventHomeIndex from '../components/pages/Event/homeIndex'
 import "./style.css";
 

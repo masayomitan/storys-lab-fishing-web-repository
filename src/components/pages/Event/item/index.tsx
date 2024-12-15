@@ -24,7 +24,7 @@ const ArticleItem: React.FC<EventItemProps> = ({ events }) => {
   const router = useRouter();
 
   const handleClick = (id) => {
-    router.push(`/events/detail/${id}`);
+    router.push(`/events/${id}`);
   };
 
   return (

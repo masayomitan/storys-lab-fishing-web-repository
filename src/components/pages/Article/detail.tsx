@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import ArticleItemBox from './item/index'
-import { formatDateTime } from '../../../utils/util'
+import { formatDateTime, getArticleUser } from '../../../utils/util'
 
 import {
   Box,
@@ -55,7 +55,7 @@ const ArticleDetailBox = ({ articleId }: any) => {
   if (!article) {
     return <div></div>
   }
-
+  console.log(article)
   return (
     <Box>
       <Box boxShadow="sm" pt={4} position="relative">
@@ -78,9 +78,12 @@ const ArticleDetailBox = ({ articleId }: any) => {
         </Box>
         <Box>{article.description}</Box>
       </Box>
-      <ArticleItemBox articles={articles} />
+      <Box>
+        <Text pl={4} fontSize="sm" fontWeight="bold">{getArticleUser(article).name}さんの他の記事</Text>
+        <ArticleItemBox articles={articles} />
+      </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default ArticleDetailBox;
+export default ArticleDetailBox

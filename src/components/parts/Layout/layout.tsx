@@ -1,16 +1,16 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react'
 
-import { Box, Flex } from '@chakra-ui/react';
-import Head from 'next/head';
-import Header from '../Header';
-import Footer from '../Footer';
-import "../../../app/globals.css";
+import { Box, Flex } from '@chakra-ui/react'
+import Head from 'next/head'
+import Header from '../Header'
+import Footer from '../Footer'
+import "../../../app/globals.css"
 
 export type LayoutProps = {
-  title?: string;
-  maxWidth?: string;
-  children?: React.ReactElement;
-  isVisibilityFooter?: boolean;
+  title?: string
+  maxWidth?: string
+  children?: React.ReactElement
+  isVisibilityFooter?: boolean
 };
 
 const Layout: React.FC<LayoutProps> = ({
@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({
       </Box>
       <Footer />
     </Flex>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout
