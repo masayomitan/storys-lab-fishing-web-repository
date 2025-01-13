@@ -6,10 +6,10 @@ import { getPrefectureById } from '../../../models/prefecture/action';
 import { Pref } from '../../../types/prefecture';
 
 interface PrefectureDetailBoxProps {
-  prefectureId: number | null;
+  prefectureId: string | null
 }
 
-const PrefectureDetailBox: React.FC<PrefectureDetailBoxProps> = ({ prefectureId }) => {
+const PrefectureDetailBox: React.FC<any> = ({ prefectureId }) => {
   const [prefecture, setPrefecture] = useState<Pref | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)

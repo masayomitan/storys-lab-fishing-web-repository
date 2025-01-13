@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import {
   Grid,
   GridItem, 
@@ -7,34 +7,34 @@ import {
   Collapse, 
   Text, 
   useDisclosure
-} from '@chakra-ui/react';
-import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
-import { FishingMethod } from '../../../types/fishingMethod';
+} from '@chakra-ui/react'
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
+import { FishingMethod } from '../../../types/fish'
 
 interface FishingMethodBoxProps {
-  data?: FishingMethod[];
+  data?: FishingMethod[]
 }
 
 const FishingMethodBox: React.FC<FishingMethodBoxProps> = ({ data }) => {
-  const { isOpen, onToggle } = useDisclosure();
-  const [showText, setShowText] = useState<boolean[]>([]);
+  const { isOpen, onToggle } = useDisclosure()
+  const [showText, setShowText] = useState<boolean[]>([])
   
   // データの変化を監視し、初期化する
   useEffect(() => {
     if (data) {
-      setShowText(data.map(() => false));
+      setShowText(data.map(() => false))
     }
-  }, [data]);
+  }, [data])
 
   // data が undefined の場合は何も表示しない
-  if (!data) return null;
+  if (!data) return null
 
-  const representativeMethod = data.find(method => method.is_traditional);
-  const otherMethods = data.filter(method => !method.is_traditional);
+  const representativeMethod = data.find(method => method.is_traditional)
+  const otherMethods = data.filter(method => !method.is_traditional)
 
   const toggleText = (index: number) => {
-    setShowText(showText.map((item, i) => (i === index ? !item : item)));
-  };
+    setShowText(showText.map((item, i) => (i === index ? !item : item)))
+  }
 
   return (
     <Box>
@@ -114,7 +114,7 @@ const FishingMethodBox: React.FC<FishingMethodBoxProps> = ({ data }) => {
         </Box>
       </Box>
     </Box>
-  );
+  )
 }
 
-export default FishingMethodBox;
+export default FishingMethodBox

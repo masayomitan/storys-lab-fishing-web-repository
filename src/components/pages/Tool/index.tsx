@@ -55,7 +55,7 @@ const ToolBox = ({ toolCategories }) => {
       />
 
     </Box>
-  );
-};
+  )
+}
 
-export default ToolBox;
+export default ToolBox

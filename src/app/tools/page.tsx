@@ -62,7 +62,7 @@ const ToolPage = () => {
   return (
     <Layout>
       <Tool 
-        data={toolData}
+        toolCategories={toolData}
       />
     </Layout>
   );
