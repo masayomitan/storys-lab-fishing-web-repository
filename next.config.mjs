@@ -8,7 +8,7 @@ const nextConfig = {
       'www.storys-lab-fishing.com/'
     ],
   },
-};
+}
 
 
-export default nextConfig;
+export default nextConfig
