@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
-import Image from 'next/image';
+import Image from 'next/image'
 import FishingMethodBox from '../FishingMethod'
 import DishBox from '../Dish'
-import { getFishById } from '../../../models/fish/action';
-import { Fish } from '../../../types/fish';
+import { getFishById } from '../../../models/fish/action'
+import { Fish } from '../../../types/fish'
 
 import { 
   Flex,
   Box, 
   Text 
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 const FishDetailBox = ({ fishId }) => {
-  const [fish, setFish] = useState<Fish | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [fish, setFish] = useState<Fish | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     if (fishId === null) return
@@ -24,20 +24,19 @@ const FishDetailBox = ({ fishId }) => {
       setIsLoading(true)
       try {
         const data = await getFishById(fishId)
-        if (data && data.FishImages && data.FishImages.length > 0) {
-          const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT
-          data.image_url = `${apiUrl}${data.FishImages[0].image_url}`
+        if (data && data.Images) {
+          data.image_url = data.Images[0].image_url
         }
-        setFish(data);
+        setFish(data)
       } catch (error) {
-        setError(error);
+        setError(error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
+    }
 
-    fetchFish();
-  }, [fishId]);
+    fetchFish()
+  }, [fishId])
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -122,7 +121,7 @@ const FishDetailBox = ({ fishId }) => {
         />
       </Box>
     </Box>
-  );
+  )
 }
 
-export default FishDetailBox;
+export default FishDetailBox

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { Box, Flex, Grid, Text } from '@chakra-ui/react';
 
 const FishItemBox: React.FC<any> = ({ fishes }) => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
   const router = useRouter();
 
   const handleClick = (id) => {

@@ -5,7 +5,9 @@ const nextConfig = {
   images: {
     domains: [
       'localhost', 
-      'www.storys-lab-fishing.com/'
+      'storys-lab-fishing.com/',
+      'www.storys-lab-fishing.com/',
+      'storys-fishing-app.s3.amazonaws.com'
     ],
   },
 }

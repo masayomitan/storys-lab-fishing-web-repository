@@ -3,7 +3,7 @@ import { FISH, FISHES } from '../../constants/url';
 
 export const getFishes = async () => {
   try {
-    const res = await axiosInstance.get(FISHES);
+    const res = await axiosInstance.get('/fishes');
     return res.data;
   } catch (error) {
     console.error('Error fetching fishes:', error);

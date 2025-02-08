@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import axiosInstance from '../../../libs/api_clients/base'
-import { FISH, FISHES } from '../../../constants/url'
+import { getFishes } from '../../../models/fish/action'
 import { 
   Box,
   Heading,
   Text
 } from '@chakra-ui/react'
 import FishItemBox from './item/index'
-
-const getFishes = async () => {
-  try {
-    const res = await axiosInstance.get(FISHES)
-    return res.data
-  } catch (error) {
-    console.error('Error fetching fishes:', error)
-    throw error
-  }
-}
 
 const FishBox = () => {
   const [fishes, setFishes] = useState([])
@@ -29,12 +18,14 @@ const FishBox = () => {
       setIsLoading(true);
       try {
         const fishes = await getFishes()
+        console.log(fishes)
         for (const fish of fishes) {
-          if (fish.FishImages.length > 0) {
-            fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + fish.FishImages[0].image_url
+          if (fish.Images) {
+            fish.image_url = fish.Images[0].image_url
           } else {
             fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
           }
+          console.log(fish.image_url)
         }
         setFishes(fishes)
       } catch (error) {
@@ -43,7 +34,6 @@ const FishBox = () => {
         setIsLoading(false)
       }
     }
-
     fetchFishes()
   }, [])
 
