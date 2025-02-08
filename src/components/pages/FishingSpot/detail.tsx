@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getFishingSpotById, getFishingSpotByAreaId } from '../../../models/fishingSpot/action';
+import React, { useState, useEffect, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import Link from 'next/link'
+import { getFishingSpotById, getFishingSpotByAreaId } from '../../../models/fishingSpot/action'
 
 import {
   Box,
@@ -11,16 +11,16 @@ import {
   GridItem,
   Heading,
   Text,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import SeasonFishesTab from '../../parts/Tab/seasonTab';
-import TideTable from '../../parts/Table/tideTable';
-import FishingSpotItemBox from '../../pages/FishingSpot/item/index';
+import SeasonFishesTab from '../../parts/Tab/seasonTab'
+import TideTable from '../../parts/Table/tideTable'
+import FishingSpotItemBox from '../../pages/FishingSpot/item/index'
 
 const FishingSpotDetailBox = ({ fishingSpotId }) => {
-  const [fishingSpot, setFishingSpot] = useState<any | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [fishingSpot, setFishingSpot] = useState<any | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
 
@@ -41,18 +41,18 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
           })
           fetchedFishingSpot.NearbyFishingSpot = filteredNearbySpots
         }
-        setFishingSpot(fetchedFishingSpot);
+        setFishingSpot(fetchedFishingSpot)
       } catch (error) {
-        setError(error);
+        setError(error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
-    };
-    fetchFishingSpot();
-  }, [fishingSpotId]);
+    }
+    fetchFishingSpot()
+  }, [fishingSpotId])
 
   if (!fishingSpot) {
-    return false;
+    return false
   }
 
   return (
@@ -170,7 +170,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
         </GridItem>
       </Grid>
     </Box>   
-  );
+  )
 }
 
-export default FishingSpotDetailBox;
+export default FishingSpotDetailBox

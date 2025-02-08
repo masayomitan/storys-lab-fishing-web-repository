@@ -18,8 +18,8 @@ import PrefectureBox from '../components/pages/Prefecture/index'
 import FishBox from '../components/pages/Fish/index'
 import ArticleBox from '../components/pages/Article'
 import ToolBox from '../components/pages/Tool/item/home'
-import EventHomeIndex from '../components/pages/Event/homeIndex'
-import "./style.css";
+import EventBox from '../components/pages/Event/index'
+import "./style.css"
 
 const  Home: React.FC = () => {
 
@@ -61,11 +61,11 @@ const  Home: React.FC = () => {
         <ToolBox />
 
         {/* イベント一覧 */}
-        <EventHomeIndex />
+        <EventBox />
 
       </Box>
     </Layout>
-  );
+  )
 }
 
-export default Home;
+export default Home

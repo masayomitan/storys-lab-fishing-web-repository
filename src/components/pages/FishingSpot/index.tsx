@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Link from 'next/link'
 
 import {
@@ -8,29 +8,29 @@ import {
     GridItem,
     Heading,
     Text,
-  } from '@chakra-ui/react';
+  } from '@chakra-ui/react'
 
 import FishingSpotItemBox from './item/index'
 
 // TODO 型は実データ次第で変更でてくる
 type FishingSpotBoxProps = {
-  id: number;
-  name: string;
-  text: string;
+  id: number
+  name: string
+  text: string
   tags: Array<{
-    id: number;
-    name: string;
-  }>;
-};
+    id: number
+    name: string
+  }>
+}
 
 type FishingSpotBoxComponentProps = {
-  fishingSpots: FishingSpotBoxProps[];
-};
+  fishingSpots: FishingSpotBoxProps[]
+}
 
 const FishingSpotBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpots }) => {
 
   if (!fishingSpots) {
-    return null;
+    return null
   }
 
   return (
@@ -68,7 +68,7 @@ const FishingSpotBox: React.FC<FishingSpotBoxComponentProps> = ({ fishingSpots }
         </Link>
       </Box>
     </Box>
-  );
+  )
 }
 
-export default FishingSpotBox;
+export default FishingSpotBox

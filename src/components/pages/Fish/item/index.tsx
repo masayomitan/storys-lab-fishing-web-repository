@@ -65,4 +65,4 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
   );
 };
 
-export default FishItemBox;
+export default FishItemBox

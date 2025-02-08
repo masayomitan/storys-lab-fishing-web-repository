@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import Link from 'next/link'
 
 import {
   Box,
@@ -10,16 +10,16 @@ import {
   GridItem,
   Heading,
   Text,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
-import { getAreaById } from '../../../models/area/action';
+import { getAreaById } from '../../../models/area/action'
 import FishingSpotItemBox from '../FishingSpot/item/index'
 
 const AreaDetailBox = ({ areaId }: any) => {
 
-  const [area, setArea] = useState<any | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [area, setArea] = useState<any | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
   
   useEffect(() => {
     if (areaId === null) return
@@ -37,13 +37,13 @@ const AreaDetailBox = ({ areaId }: any) => {
         }
         setArea(fetchedArea)
       } catch (error) {
-        setError(error);
+        setError(error)
       } finally {
-        setIsLoading(false);
+        setIsLoading(false)
       }
     }
-    fetchArea();
-  }, [areaId]);
+    fetchArea()
+  }, [areaId])
 
   if (!area) {
     return <div></div>
@@ -84,7 +84,7 @@ const AreaDetailBox = ({ areaId }: any) => {
         </Link>
       </Box>
     </Box>   
-  );
+  )
 }
 
-export default AreaDetailBox;
+export default AreaDetailBox

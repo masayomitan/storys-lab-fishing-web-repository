@@ -1,15 +1,15 @@
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react'
+import { useRouter } from 'next/navigation'
 import {
   Box,
   Grid,
   Flex,
   Image,
   Text
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 interface AreaBoxProps {
-  data?: any;
+  data?: any
 }
 
 const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
@@ -76,7 +76,7 @@ const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
         ))}
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
-export default FishingSpotItemBox;
+export default FishingSpotItemBox

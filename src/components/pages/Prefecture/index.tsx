@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Link from 'next/link'
 
 import {
@@ -7,7 +7,7 @@ import {
   GridItem,
   Heading,
   Text,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 import PrefectureItem from '../Prefecture/item/index'
 
@@ -48,7 +48,7 @@ const PrefectureBox = () => {
         </Link>
       </Box>
     </Box>   
-  );
-};
+  )
+}
 
-export default PrefectureBox;
+export default PrefectureBox
