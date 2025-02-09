@@ -91,7 +91,7 @@ const FishDetailBox = ({ fishId }) => {
           <Text mb={2} color="rgb(108, 117, 125)">魚種: {fish.FishCategory.name}</Text>
           <Text mb={2} color="rgb(108, 117, 125)">サイズ: {fish.length} cm</Text>
           <Text mb={2} color="rgb(108, 117, 125)">重量: {fish.weight} kg</Text>
-          <Text color="rgb(108, 117, 125)">主な生息地</Text>
+          <Text color="rgb(108, 117, 125)">主な生息地: {fish.habitat}</Text>
         </Box>
         <Box>
           <Flex wrap="wrap">
