@@ -54,7 +54,9 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
                   <Text textAlign="center" mb={2}>
                     {fish.name}
                   </Text>
-                  <Text textAlign="center">主なエリア {index + 1}</Text>
+                  <Text textAlign="center">
+                    {fish.scientific_name}
+                  </Text>
                 </Box>
               </Flex>
             </Box>
