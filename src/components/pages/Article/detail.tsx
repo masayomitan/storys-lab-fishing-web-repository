@@ -55,7 +55,7 @@ const ArticleDetailBox = ({ articleId }: any) => {
   if (!article) {
     return <div></div>
   }
-  console.log(article)
+
   return (
     <Box>
       <Box boxShadow="sm" pt={4} position="relative">
