@@ -10,8 +10,10 @@ export interface Fish {
   length: number
   weight: number
   habitat: string
-  depth_range: string
-  water_temperature_range: string
+  depth_range_min: string
+  depth_range_max: string
+  water_temperature_range_min: string
+  water_temperature_range_max: string
   conservation_status: string
   FishCategory: FishCategory
   FishingMethods: FishingMethod[]

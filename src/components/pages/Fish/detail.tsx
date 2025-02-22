@@ -91,6 +91,8 @@ const FishDetailBox = ({ fishId }) => {
           <Text mb={2} color="rgb(108, 117, 125)">魚種: {fish.FishCategory.name}</Text>
           <Text mb={2} color="rgb(108, 117, 125)">サイズ: {fish.length} cm</Text>
           <Text mb={2} color="rgb(108, 117, 125)">重量: {fish.weight} kg</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">生息深度: {fish.water_temperature_range_min} ~ {fish.water_temperature_range_max} m</Text>
+          <Text mb={2} color="rgb(108, 117, 125)">生息水温: {fish.depth_range_min} ~ {fish.depth_range_max} ℃</Text>
           <Text color="rgb(108, 117, 125)">主な生息地: {fish.habitat}</Text>
         </Box>
         <Box>
@@ -115,7 +117,7 @@ const FishDetailBox = ({ fishId }) => {
             >
               磯
             </Text>
-            <Text 
+            <Text
               m={1}
               p="4px 17px"
               fontSize="14px"

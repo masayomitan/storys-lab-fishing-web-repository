@@ -1,13 +1,13 @@
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { Box, Flex, Grid, Text } from '@chakra-ui/react';
+import React from 'react'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import { Box, Flex, Grid, Text } from '@chakra-ui/react'
 
 const FishItemBox: React.FC<any> = ({ fishes }) => {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleClick = (id) => {
-    router.push(`/fishes/${id}`);
+    router.push(`/fishes/${id}`)
   }
 
   return (
@@ -60,11 +60,11 @@ const FishItemBox: React.FC<any> = ({ fishes }) => {
                 </Box>
               </Flex>
             </Box>
-          );
+          )
         })}
       </Grid>
     </Box>
-  );
-};
+  )
+}
 
 export default FishItemBox
