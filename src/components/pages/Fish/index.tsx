@@ -18,13 +18,6 @@ const FishBox = () => {
       setIsLoading(true);
       try {
         const fishes = await getFishes()
-        for (const fish of fishes) {
-          if (fish.Images) {
-            fish.image_url = fish.Images[0].image_url
-          } else {
-            fish.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
-          }
-        }
         setFishes(fishes)
       } catch (error) {
         setError(error)

@@ -13,7 +13,6 @@ interface AreaBoxProps {
 
 const AreaItem: React.FC<AreaBoxProps> = ({ areas }) => {
   const router = useRouter()
-
   const handleClick = (pref) => () => {
     router.push(`/areas/${pref.id}`)
   }
@@ -37,7 +36,7 @@ const AreaItem: React.FC<AreaBoxProps> = ({ areas }) => {
             position="relative"
           >
             <Image
-              src={area.image_url}
+              src={area.Images ? area.Images[0]?.image_url : process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`}
               alt={area.name}
               style={{ 
                 objectFit: 'contain',

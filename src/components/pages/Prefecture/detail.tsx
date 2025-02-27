@@ -21,13 +21,6 @@ const PrefectureDetailBox: React.FC<any> = ({ prefectureId }) => {
       setIsLoading(true)
       try {
         const fetchedPrefecture = await getPrefectureById(prefectureId)
-        for (const area of fetchedPrefecture.Areas) {
-          if (area && area.image_url !== '') {
-            area.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + area.image_url    
-          } else {
-            area.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
-          }
-        }
 
         setPrefecture(fetchedPrefecture)
       } catch (error) {
