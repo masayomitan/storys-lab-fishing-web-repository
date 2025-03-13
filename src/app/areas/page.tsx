@@ -1,16 +1,16 @@
 'use client'
 
-import React from 'react';
+import React from 'react'
 
-import Layout from '../../components/parts/Layout/layout';
-import Area from '../../components/pages/Area';
+import Layout from '../../components/parts/Layout/layout'
+import Area from '../../components/pages/Area'
 
 const AreaPage = () => {
   return (
     <Layout>
       <Area />
     </Layout>
-  );
+  )
 }
 
-export default AreaPage;
+export default AreaPage

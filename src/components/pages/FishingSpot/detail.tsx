@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import Slider from 'react-slick'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,10 +18,21 @@ import SeasonFishesTab from '../../parts/Tab/seasonTab'
 import TideTable from '../../parts/Table/tideTable'
 import FishingSpotItemBox from '../../pages/FishingSpot/item/index'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 const FishingSpotDetailBox = ({ fishingSpotId }) => {
   const [fishingSpot, setFishingSpot] = useState<any | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  const sliderSettings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  }
 
   useEffect(() => {
 
@@ -28,18 +40,16 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
       setIsLoading(true)
       try {
         const fetchedFishingSpot = await getFishingSpotById(fishingSpotId)
+        console.log(fetchedFishingSpot.area_id)
         if (fetchedFishingSpot) {
-          if (fetchedFishingSpot && fetchedFishingSpot.image_url !== '') {
-            fetchedFishingSpot.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + fetchedFishingSpot.image_url    
-          } else {
-            fetchedFishingSpot.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
-          }
-  
           const nearbyFishingSpots = await getFishingSpotByAreaId(fetchedFishingSpot.area_id)
-          const filteredNearbySpots = nearbyFishingSpots.filter((spot: any) => {
-            return Number(spot.id) !== Number(fishingSpotId)
-          })
-          fetchedFishingSpot.NearbyFishingSpot = filteredNearbySpots
+          console.log(nearbyFishingSpots)
+          if (nearbyFishingSpots) {
+            const filteredNearbySpots = nearbyFishingSpots.filter((spot: any) => {
+              return Number(spot.id) !== Number(fishingSpotId)
+            })
+            fetchedFishingSpot.NearbyFishingSpot = filteredNearbySpots
+          }
         }
         setFishingSpot(fetchedFishingSpot)
       } catch (error) {
@@ -74,12 +84,29 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
           h="15rem" 
           textAlign="center"
         >
-          <Image
-            src={fishingSpot.image_url}
-            layout="fill"
-            objectFit="cover"
-            alt="釣り場詳細画像"
-          />
+          <Slider {...sliderSettings}>
+            {fishingSpot.Images && fishingSpot.Images.length > 0 ? (
+              fishingSpot.Images.map((image, index) => (
+                <Box key={index} w="100%" h="15rem" textAlign="center" position="relative">
+                  <Image
+                    src={image.image_url}
+                    layout="fill"
+                    style={{ objectFit: 'cover' }}
+                    alt={`釣り場画像 ${index + 1}`}
+                  />
+                </Box>
+              ))
+            ) : (
+              <Box w="100%" h="15rem" textAlign="center" position="relative">
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_ENDPOINT + '/public/images/no_image.png'}
+                  layout="fill"
+                  style={{ objectFit: 'cover' }}
+                  alt="No Image Available"
+                />
+              </Box>
+            )}
+          </Slider>
         </Box>
       </Box>
 

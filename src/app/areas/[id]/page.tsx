@@ -1,21 +1,21 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'next/navigation'
 
-import Layout from '../../../components/parts/Layout/layout';
-import AreaDetail from '../../../components/pages/Area/detail';
+import Layout from '../../../components/parts/Layout/layout'
+import AreaDetail from '../../../components/pages/Area/detail'
 
 const FishingSpotPage = () => {
-  const [areaId, setAreaId] = useState<string | null>(null);
+  const [areaId, setAreaId] = useState<string | null>(null)
   const params = useParams()
 
   useEffect(() => {
     if (params && params.id) {
       const fishingSpotId = params.id
-      setAreaId(fishingSpotId as string);
+      setAreaId(fishingSpotId as string)
     } 
-  }, [params]);
+  }, [params])
 
   return (
     <Layout>
@@ -23,7 +23,7 @@ const FishingSpotPage = () => {
         areaId={areaId}
       />
     </Layout>
-  );
+  )
 }
 
-export default FishingSpotPage;
+export default FishingSpotPage

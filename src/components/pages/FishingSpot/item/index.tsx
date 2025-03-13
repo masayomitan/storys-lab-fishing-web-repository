@@ -12,7 +12,7 @@ interface AreaBoxProps {
   data?: any
 }
 
-const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
+const FishingSpotItemBox: React.FC<AreaBoxProps> = ({ data }) => {
   const router = useRouter()
 
   const handleClick = (pref) => () => {
@@ -36,7 +36,7 @@ const FishingSpotItemBox: React.FC<AreaBoxProps> = ({data}) => {
             position="relative"
           >
             <Image
-              src={pref.image_url}
+              src={pref.Images ? pref.Images[0]?.image_url : process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`}
               alt={pref.name}
               style={{ 
                 objectFit: 'cover',
