@@ -150,7 +150,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
             />
           }
 
-          <Box
+          {/* <Box
             m="20px 0"
           >
             <Box>
@@ -179,7 +179,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
                 テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
               </Text>
             </Box>
-          </Box>
+          </Box> */}
 
           <Heading 
             textAlign="center"
