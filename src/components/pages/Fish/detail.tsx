@@ -144,7 +144,7 @@ const FishDetailBox = ({ fishId }) => {
         />
 
         <DishBox
-          data={fish.Dishes}
+          dishes={fish.Dishes}
         />
       </Box>
     </Box>
