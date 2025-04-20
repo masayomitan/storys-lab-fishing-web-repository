@@ -145,7 +145,7 @@ const FishingSpotDetailBox = ({ fishingSpotId }) => {
           
            {/* 潮時表 */}
           {fishingSpot.Area.Tides &&
-            <TideTable 
+            <TideTable
               data={fishingSpot.Area.Tides}
             />
           }

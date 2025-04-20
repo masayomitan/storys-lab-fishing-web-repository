@@ -6,17 +6,13 @@ import ScrollTab from '../components/parts/Tab/scrollTab'
 
 import {
   Box,
-  Container,
-  Grid,
-  GridItem,
-  Text,
 } from '@chakra-ui/react'
 
 import Layout from '../components/parts/Layout/layout'
 import SearchBar from '../components/parts/SearchBar/index'
 import PrefectureBox from '../components/pages/Prefecture/index'
 import FishBox from '../components/pages/Fish/index'
-import ArticleBox from '../components/pages/Article'
+// import ArticleBox from '../components/pages/Article'
 import ToolBox from '../components/pages/Tool/item/home'
 import EventBox from '../components/pages/Event/index'
 import "./style.css"
@@ -55,7 +51,7 @@ const  Home: React.FC = () => {
         <FishBox />
         
         {/* 記事一覧 */}
-        <ArticleBox />
+        {/* <ArticleBox /> */}
 
         {/* 道具種別一覧 */}
         <ToolBox />

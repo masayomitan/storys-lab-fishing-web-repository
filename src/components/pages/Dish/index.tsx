@@ -20,8 +20,8 @@ import {
 } from '@chakra-ui/react'
 
 // データを整形する関数
-const transformData = (data: any[]): Dish[] => {
-  return data.map(dish => {
+const transformdish = (dishes: any[]): Dish[] => {
+  return dishes.map(dish => {
     let image_url = ''
     if (dish.DishImages) {
       const mainImage = dish.DishImages.find(image => image.is_main) || dish.DishImages[0]
@@ -31,38 +31,38 @@ const transformData = (data: any[]): Dish[] => {
     }
     return {
       ...dish,
-      ingredients: JSON.parse(dish.ingredients),
+      ingredients: dish.ingredients,
       image_url
     }
   })
 }
 
-const DishBox = ({ data }) => {
+const DishBox = ({ dishes }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [selectedDish, setSelectedDish] = useState<Dish | null>(null)
-  const [transformedData, setTransformedData] = useState<Dish[]>([])
+  const [selectedDishes, setSelectedDishes] = useState<Dish | null>(null)
+  const [transformeddish, setTransformeddish] = useState<Dish[]>([])
 
   useEffect(() => {
-    if (data) {
-      setTransformedData(transformData(data))
+    if (dishes) {
+      setTransformeddish(transformdish(dishes))
     }
-  }, [data])
+  }, [dishes])
 
-  const handleClick = (dish: Dish) => {
-    setSelectedDish(dish)
+  const handleClick = (dishes: Dish) => {
+    setSelectedDishes(dishes)
     onOpen()
   }
 
   return (
     <Box>
-    {data && (
+    {dishes && (
       <Box mt={10} mb={10}>
         <Heading textAlign="center" size="md">
           おすすめ料理
         </Heading>
 
         <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-          {transformedData.map((dish, index) => (
+          {transformeddish.map((dish, index) => (
             <Box key={index}>
               <Box
                 boxShadow="lg"
@@ -107,7 +107,7 @@ const DishBox = ({ data }) => {
         </Grid>
 
         {/* Modal */}
-        {selectedDish && (
+        {selectedDishes && (
           <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={true}>
             <ModalOverlay bg="rgba(0, 0, 0, 0.6)" onClick={onClose} />
             <ModalContent margin="auto" mt="10%" w="90%" bg="white">
@@ -123,16 +123,16 @@ const DishBox = ({ data }) => {
                     alignItems="center"
                   >
                     <Image
-                      src={selectedDish.image_url}
+                      src={selectedDishes.image_url}
                       layout="fill"
                       style={{ objectFit: 'contain' }}
                       alt="料理画像"
                     />
                   </Box>
                   <Text fontSize="20px" mb={1}>
-                    {selectedDish.name}
+                    {selectedDishes.name}
                   </Text>
-                  {selectedDish.ingredients.map((ingredient, index) => (
+                  {selectedDishes.ingredients.map((ingredient, index) => (
                     <Text key={index} mb={1} color="rgb(108, 117, 125)">
                       {ingredient.name} : {ingredient.amount}
                     </Text>
@@ -146,7 +146,7 @@ const DishBox = ({ data }) => {
                       lineHeight: '1.6'
                     }}
                   >
-                    {selectedDish.description}
+                    {selectedDishes.description}
                   </Text>
                 </Flex>
               </ModalBody>
