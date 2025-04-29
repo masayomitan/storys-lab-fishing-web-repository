@@ -30,7 +30,7 @@ const ToolDetailBox = ({ toolId }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-  };
+  }
 
   useEffect(() => {
     if (toolId === null) return
@@ -39,13 +39,6 @@ const ToolDetailBox = ({ toolId }) => {
       setIsLoading(true)
       try {
         const tool = await getToolById(toolId)
-        if (tool.ToolImages && tool.ToolImages.length > 0) {
-          tool.ToolImages = tool.ToolImages.map(toolImage => 
-            process.env.NEXT_PUBLIC_API_ENDPOINT + toolImage.image_url
-          )
-        } else {
-          tool.image_urls = [process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`]
-        }
         setTool(tool)
       } catch (error) {
         setError(error)
@@ -69,7 +62,7 @@ const ToolDetailBox = ({ toolId }) => {
       <Box gap={4} p={4}>
         <Box boxShadow="sm" p={4} position="relative">
           <Slider {...sliderSettings}>
-            {tool.ToolImages.map((toolImage, index) => (
+            {tool.Images.map((toolImage, index) => (
               <Flex key={index}>
                 <Box
                   key={index}
