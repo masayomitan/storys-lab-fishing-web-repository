@@ -22,13 +22,6 @@ const EventBox = () => {
 			setIsLoading(true)
 			try {
 				const events = await getEvents()
-				// for (const ArticleImage of fetchedArticle.ArticleImages) {
-				//   if (fetchedArticle && ArticleImage.image_url !== '') {
-				//     fetchedArticle.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + ArticleImage.image_url
-				//   } else {
-				//     fetchedArticle.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
-				//   }
-				// }
 				setEvents(events)
 			} catch (error) {
 				setError(error)

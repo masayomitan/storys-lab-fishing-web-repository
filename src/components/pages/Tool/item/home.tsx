@@ -37,13 +37,6 @@ const ToolHomeBox: React.FC<any> = () => {
       setIsLoading(true);
       try {
         const tools = await getTools()
-        for (const tool of tools) {
-          if (tool.ToolImages.length > 0) {
-            tool.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + tool.ToolImages[0].image_url
-          } else {
-            // tool.image_url = process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`
-          }
-        }
         setTools(tools)
       } catch (error) {
         setError(error)
@@ -54,6 +47,9 @@ const ToolHomeBox: React.FC<any> = () => {
     fetchFishes()
   }, [])
 
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
   if (!tools) return
 
   return (
@@ -85,16 +81,15 @@ const ToolHomeBox: React.FC<any> = () => {
               justifyContent="center"
             >
               <Image
-                src={tool.image_url}
+                src={tool.Images ? tool.Images[0]?.image_url : process.env.NEXT_PUBLIC_API_ENDPOINT + `/public/images/no_image.png`}
+                alt="Story's"
                 width={16}
                 height={12}
-                layout="responsive"
                 style={{
                   width: "100%",
                   height: 'auto',
                   objectFit: "contain",
                 }}
-                alt="道具画像"
               />
             </Box>
             <Box p={3}>
